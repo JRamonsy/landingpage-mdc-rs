@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tarjeta de presentación digital - [Nombre Cliente]" />
+  <title>[Nombre] - [Profesión]</title>
+  
+  <style>
+    :root {
+      --primary-color: #2563eb;
+      --text-color: #1f2937;
+      --text-secondary: #6b7280;
+      --bg-color: #ffffff;
+      --radius: 16px;
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #f8fafc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 1rem;
+    }
+
+    .card {
+      background: var(--bg-color);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      max-width: 380px;
+      width: 100%;
+      text-align: center;
+      padding: 2rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, var(--primary-color), #60a5fa);
+    }
+
+    .profile-pic {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1.5rem;
+      border: 4px solid #e5e7eb;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      color: var(--text-color);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    h2 {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .description {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      padding: 0.8rem;
+      background: #f8fafc;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .contact-item:hover {
+      background: #f1f5f9;
+      transform: translateX(5px);
+    }
+
+    .contact-item ion-icon {
+      font-size: 1.3rem;
+      color: var(--primary-color);
+    }
+
+    .contact-text {
+      text-align: left;
+    }
+
+    .contact-label {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.2rem;
+    }
+
+    .contact-value {
+      font-size: 0.9rem;
+      color: var(--text-color);
+      font-weight: 500;
+    }
+
+    .social-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .social-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 2px solid #e5e7eb;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .social-btn:hover {
+      transform: translateY(-3px);
+      border-color: var(--primary-color);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .social-btn ion-icon {
+      font-size: 1.4rem;
+      color: var(--primary-color);
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .action-btn {
+      flex: 1;
+      padding: 0.8rem 1rem;
+      border: none;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .action-btn.primary {
+      background: var(--primary-color);
+      color: white;
+    }
+
+    .action-btn.secondary {
+      background: #f8fafc;
+      color: var(--text-color);
+      border: 2px solid #e5e7eb;
+    }
+
+    .action-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .credits {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      margin-top: 1rem;
+    }
+
+    .credits a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 1.5rem 1rem;
+      }
+      
+      .action-buttons {
+        flex-direction: column;
+      }
+    }
+
+    .btn-inicio-flotante {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--primary-color, #2563eb);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.btn-inicio-flotante:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  background: var(--secondary-color, #1e40af);
+}
+
+.btn-inicio-flotante ion-icon {
+  font-size: 1.2rem;
+}
+
+/* Ocultar texto en móviles para ahorrar espacio */
+@media (max-width: 480px) {
+  .btn-inicio-flotante .btn-text {
+    display: none;
+  }
+  
+  .btn-inicio-flotante {
+    padding: 12px;
+    border-radius: 50%;
+  }
+}
+  </style>
+
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+  <div class="card">
+    <img src="../assets/imgs/profile.jpg" alt="[Nombre Cliente]" class="profile-pic" />
+    <h1>[Nombre Cliente]</h1>
+    <h2>[Profesión]</h2>
+    <p class="description">[Descripción breve del servicio o profesión]</p>
+
+    <div class="contact-info">
+      <div class="contact-item" onclick="window.open('tel:+521234567890')">
+        <ion-icon name="call-outline"></ion-icon>
+        <div class="contact-text">
+          <div class="contact-label">Teléfono</div>
+          <div class="contact-value">+52 123 456 7890</div>
+        </div>
+      </div>
+
+      <div class="contact-item" onclick="window.open('mailto:contacto@cliente.com')">
+        <ion-icon name="mail-outline"></ion-icon>
+        <div class="contact-text">
+          <div class="contact-label">Email</div>
+          <div class="contact-value">contacto@cliente.com</div>
+        </div>
+      </div>
+
+      <div class="contact-item" onclick="window.open('https://wa.me/521234567890?text=Hola,%20me%20interesan%20tus%20servicios')">
+        <ion-icon name="logo-whatsapp"></ion-icon>
+        <div class="contact-text">
+          <div class="contact-label">WhatsApp</div>
+          <div class="contact-value">Enviar mensaje</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="social-buttons">
+      <a href="https://facebook.com" class="social-btn" target="_blank">
+        <ion-icon name="logo-facebook"></ion-icon>
+      </a>
+      <a href="https://instagram.com" class="social-btn" target="_blank">
+        <ion-icon name="logo-instagram"></ion-icon>
+      </a>
+      <a href="https://linkedin.com" class="social-btn" target="_blank">
+        <ion-icon name="logo-linkedin"></ion-icon>
+      </a>
+    </div>
+
+    <div class="action-buttons">
+      <button class="action-btn primary" id="btnCompartir">
+        <ion-icon name="share-outline"></ion-icon>
+        Compartir
+      </button>
+      <button class="action-btn secondary" id="btnGuardar">
+        <ion-icon name="person-add-outline"></ion-icon>
+        Guardar
+      </button>
+    </div>
+
+    <div class="credits">
+      © 2024 [Nombre Cliente] | 
+      <a href="https://ramonsalas.com" target="_blank">Diseñado por Ramón Salas</a>
+    </div>
+  </div>
+
+  <button class="btn-inicio-flotante" onclick="window.location.href = 'https://tudominio.com'">
+  <ion-icon name="home-outline"></ion-icon>
+  <span class="btn-text">Inicio</span>
+</button>
+
+  <script>
+    const urlTarjeta = window.location.href;
+
+    document.getElementById("btnCompartir").addEventListener("click", async () => {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: document.querySelector('h1').textContent,
+            text: document.querySelector('.description').textContent,
+            url: urlTarjeta
+          });
+        } catch (error) {
+          console.log("Error al compartir:", error);
+        }
+      } else {
+        navigator.clipboard.writeText(urlTarjeta).then(() => {
+          alert("¡Link copiado al portapapeles!");
+        });
+      }
+    });
+
+    document.getElementById("btnGuardar").addEventListener("click", () => {
+      const nombre = document.querySelector('h1').textContent;
+      const profesion = document.querySelector('h2').textContent;
+      
+      const vcf = `BEGIN:VCARD
+VERSION:3.0
+FN:${nombre}
+TITLE:${profesion}
+TEL;TYPE=CELL:+521234567890
+EMAIL:contacto@cliente.com
+URL:${window.location.href}
+NOTE:${document.querySelector('.description').textContent}
+END:VCARD`;
+
+      const blob = new Blob([vcf], { type: "text/vcard;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "contacto.vcf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    });
+  </script>
+</body>
+</html>

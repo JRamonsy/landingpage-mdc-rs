@@ -1,202 +1,387 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Tarjeta de presentación digital" />
-  <title>Tarjeta Digital - Juan Gerardo Miranda</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarjetas Digitales Profesionales | Transforma Tu Contacto</title>
+    <style>
+        /* Estilos básicos y modernos */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <link rel="stylesheet" href="styles/styles.css">
-  <script src=""></script>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
 
-  <!-- Fuente e íconos -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script> <!-- Reemplaza con tu kit de FontAwesome -->
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
-  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        /* Header */
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+        }
 
+        .logo {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            font-size: 1.3em;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            color: #666;
+        }
+
+        /* Planes */
+        .planes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .plan {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .plan:hover {
+            transform: translateY(-5px);
+        }
+
+        .plan.basica {
+            border-top: 5px solid #4CAF50;
+        }
+
+        .plan.premium {
+            border-top: 5px solid #2196F3;
+        }
+
+        .plan.empresarial {
+            border-top: 5px solid #FF9800;
+        }
+
+        .plan h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .precio {
+            font-size: 2em;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #333;
+        }
+
+        .precio span {
+            font-size: 0.5em;
+            color: #666;
+        }
+
+        .caracteristicas {
+            list-style: none;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .caracteristicas li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .caracteristicas li:before {
+            content: "✓ ";
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        /* Botones */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+
+        .btn:hover {
+            background: #5a6fd8;
+            transform: translateY(-2px);
+        }
+
+        .btn-demo {
+            background: transparent;
+            border: 2px solid #667eea;
+            color: #667eea;
+        }
+
+        .btn-demo:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        /* Beneficios */
+        .beneficios {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin: 40px 0;
+        }
+
+        .beneficios h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .grid-beneficios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .beneficio {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .beneficio h3 {
+            color: #667eea;
+            margin: 15px 0;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: white;
+            margin-top: 50px;
+        }
+
+        .creditos {
+            opacity: 0.8;
+            margin-top: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+            
+            .planes {
+                grid-template-columns: 1fr;
+            }
+            
+            .plan {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-  
-  
-  <div class="card">
-    
-    <div class="background"></div>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">VCardsMX</div>
+            <div class="tagline">Tu contacto, siempre actualizado y profesional</div>
+        </header>
 
-    <img src="imgs/profile.jpg" alt="Foto de perfil" class="profile-pic" />
-    <h1>Juan Gerardo Miranda</h1>
-    <h2>Planificador Financiero</h2>
-    <p class="description" >Te acompaño a crear un plan financiero claro y sostenible para que vivas con tranquilidad y seguridad económica.</p>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Transforma Tu Forma de Compartir Contacto</h1>
+            <p>Deja atrás las tarjetas físicas que se pierden o quedan obsoletas. Con nuestras tarjetas digitales, tu información siempre está actualizada y disponible con un solo click.</p>
+            <a href="#planes" class="btn">Ver Planes</a>
+            <a href="#beneficios" class="btn btn-demo">Conoce los Beneficios</a>
+        </section>
 
-    <div class="buttons">
-      <button class="btn" onclick="window.open('mailto:contacto@ramonsalas.com')">
-        <ion-icon class="button-btn-icon" name="mail-outline"></ion-icon>
-      </button>
-      <button class="btn" onclick="window.open('https://wa.me/524445583022?text=Hola,%20quiero%20más%20información%20sobre%20tus%20servicios')">
-        <ion-icon class="button-btn-icon" name="logo-whatsapp"></ion-icon>
-      </button>
+        <!-- Planes -->
+        <section id="planes">
+            <h2 style="text-align: center; color: white; margin-bottom: 30px; font-size: 2em;">Elige Tu Plan Perfecto</h2>
+            
+            <div class="planes">
+                <!-- Plan Básica -->
+                <div class="plan basica">
+                    <h3>Básica</h3>
+                    <div class="precio">$300 <span>MXN</span></div>
+                    <ul class="caracteristicas">
+                        <li>Diseño limpio y profesional</li>
+                        <li>Información de contacto esencial</li>
+                        <li>Botón directo de WhatsApp</li>
+                        <li>Enlaces a redes sociales</li>
+                        <li>QR personalizado</li>
+                        <li>Hosting incluido por 1 año</li>
+                    </ul>
+                    <a href="demo/basica.html" class="btn btn-demo" target="_blank">Ver Demo</a>
+                    <a href="https://wa.me/524447022589?text=Hola,%20me%20interesa%20el%20plan%20Básica" class="btn" target="_blank">Ordenar Ahora</a>
+                </div>
+
+                <!-- Plan Premium -->
+                <div class="plan premium">
+                    <h3>Premium</h3>
+                    <div class="precio">$600 <span>MXN</span></div>
+                    <ul class="caracteristicas">
+                        <li>Todo lo del plan Básica +</li>
+                        <li>Diseño premium con animaciones</li>
+                        <li>Foto profesional integrada</li>
+                        <li>Múltiples botones de acción</li>
+                        <li>Sección de servicios/portafolio</li>
+                        <li>QR con logo personalizado</li>
+                        <li>Hosting incluido por 1 año</li>
+                        <li>Soporte prioritario</li>
+                    </ul>
+                    <a href="/demo/premium.html" class="btn btn-demo" target="_blank">Ver Demo</a>
+                    <a href="https://wa.me/524447022589?text=Hola,%20me%20interesa%20el%20plan%20Premium" class="btn" target="_blank">Ordenar Ahora</a>
+                </div>
+
+                <!-- Plan Empresarial -->
+                <div class="plan empresarial">
+                    <h3>Empresarial</h3>
+                    <div class="precio">$900 <span>MXN</span></div>
+                    <ul class="caracteristicas">
+                        <li>Todo lo del plan Premium +</li>
+                        <li>Diseño completamente personalizado</li>
+                        <li>Galería de portafolio/proyectos</li>
+                        <li>Integración con calendario</li>
+                        <li>Mapa de ubicación</li>
+                        <li>Múltiples perfiles (equipos)</li>
+                        <li>Analytics básico de visitas</li>
+                        <li>Hosting incluido por 1 año</li>
+                        <li>Soporte 24/7</li>
+                    </ul>
+                    <a href="/demo/empresarial.html" class="btn btn-demo" target="_blank">Ver Demo</a>
+                    <a href="https://wa.me/524447022589?text=Hola,%20me%20interesa%20el%20plan%20Empresarial" class="btn" target="_blank">Ordenar Ahora</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Beneficios -->
+        <section id="beneficios" class="beneficios">
+            <h2>¿Por Qué Elegir Tarjetas Digitales?</h2>
+            <div class="grid-beneficios">
+                <div class="beneficio">
+                    <h3>🚀 Siempre Actualizada</h3>
+                    <p>Cambias tu número o email una vez y todos tus contactos lo ven actualizado al instante.</p>
+                </div>
+                <div class="beneficio">
+                    <h3>📱 Fácil de Compartir</h3>
+                    <p>Comparte tu contacto por WhatsApp, email, redes sociales o con un simple código QR.</p>
+                </div>
+                <div class="beneficio">
+                    <h3>💼 Profesional</h3>
+                    <p>Demuestra que tu negocio está a la vanguardia tecnológica y genera más confianza.</p>
+                </div>
+                <div class="beneficio">
+                    <h3>🌍 Ecológico</h3>
+                    <p>Reduce el uso de papel y plástico. Una solución moderna y sustentable.</p>
+                </div>
+                <div class="beneficio">
+                    <h3>⏰ Ahorra Tiempo</h3>
+                    <p>Tus clientes guardan tu contacto automáticamente, sin tener que escribir nada.</p>
+                </div>
+                <div class="beneficio">
+                    <h3>📈 Conversiones</h3>
+                    <p>Botones de acción directa que aumentan las llamadas, mensajes y visitas a tu sitio.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section class="hero">
+            <h2>¿Listo para Modernizar Tu Contacto?</h2>
+            <p>Comienza hoy mismo y da el siguiente paso en tu presencia digital profesional.</p>
+            <a href="https://wa.me/574447022589?text=Hola,%20quiero%20más%20información%20sobre%20las%20tarjetas%20digitales" class="btn" target="_blank">Contactar por WhatsApp</a>
+            <p style="margin-top: 15px; font-size: 0.9em; color: #666;">Respuesta en menos de 15 minutos</p>
+        </section>
     </div>
 
-    <div class="carrusel">
-  <div class="contenedor">
-    <!-- <div class="elemento"></div>
-    <div class="elemento"></div>
-    <div class="elemento"></div>
-    <div class="elemento"></div> -->
-
-    <!-- Se duplican para permitir el loop infinito -->
-    <!-- <div class="elemento"></div>
-    <div class="elemento"></div>
-    <div class="elemento"></div>
-    <div class="elemento"></div> -->
-
-    <img src="imgs\img-1.png" alt="" class="img-elemento" >
-    <img src="imgs\img-2.jpg" alt="" class="img-elemento" >
-    <img src="imgs\img-3.webp" alt="" class="img-elemento" >
-    <img src="imgs\img-4.png" alt="" class="img-elemento" >
-
-    <img src="imgs\img-1.png" alt="" class="img-elemento" >
-    <img src="imgs\img-2.jpg" alt="" class="img-elemento" >
-    <img src="imgs\img-3.webp" alt="" class="img-elemento" >
-    <img src="imgs\img-4.png" alt="" class="img-elemento" >
-
-  </div>
-</div>
-
-
-    <!-- <div class="slider" >
-      <img src="imgs\img-1.png" alt="">
-      <img src="imgs\img-2.jpg" alt="">
-      <img src="imgs\img-3.webp" alt="">
-      <img src="imgs\img-4.png" alt="">
-    </div> -->
-
-    <div class="socials">
-
-      <button class="btn-social" >
-        <a class="an-btn-social" href="">
-          <ion-icon name="logo-facebook" class="icon-social-1" ></ion-icon>
-          <div class="text-btn" >
-            <p class="btn-title" >Facebook</p>
-            <p class="btn-text" >Siguenos en facebook</p>
-          </div>
-          <ion-icon name="chevron-forward-outline" class="icon-social-2" ></ion-icon>
-        </a>
-      </button>
-
-      <button class="btn-social" >
-        <a class="an-btn-social" href="">
-          <ion-icon name="logo-instagram" class="icon-social-1" ></ion-icon>
-          <div class="text-btn" >
-            <p class="btn-title" >Instagram</p>
-            <p class="btn-text" >Siguenos en Instagram</p>
-          </div>
-          <ion-icon name="chevron-forward-outline" class="icon-social-2" ></ion-icon>
-        </a>
-      </button>
-
-      <button class="btn-social" >
-        <a class="an-btn-social" href="">
-          <ion-icon name="logo-linkedin" class="icon-social-1" ></ion-icon>
-          <div class="text-btn" >
-            <p class="btn-title" >Linkedin</p>
-            <p class="btn-text" >Conecta conmigo</p>
-          </div>
-          <ion-icon name="chevron-forward-outline" class="icon-social-2" ></ion-icon>
-        </a>
-      </button>
-
-      <button class="btn-social" >
-        <a class="an-btn-social" href="">
-          <ion-icon name="logo-youtube" class="icon-social-1" ></ion-icon>
-          <div class="text-btn" >
-            <p class="btn-title" >Youtube</p>
-            <p class="btn-text" >Ve nuevas actualizaciones</p>
-          </div>
-          <ion-icon name="chevron-forward-outline" class="icon-social-2" ></ion-icon>
-        </a>
-      </button>
-
-    </div>
-
-    
-
-    <footer  >
-        <button class="btn-footer" id="btnCompartir" >Compartir <br> Contacto 
-          <ion-icon class="button-btn-icon-footer" name="download-outline"></ion-icon>
-        </button>
-        
-        <button class="btn-footer" id="btnGuardar" >
-          Agregar <br> Contacto
-          <ion-icon class="button-btn-icon-footer" name="add-outline"></ion-icon>
-        </button>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 VCardsMX. Todos los derechos reservados.</p>
+            <p class="creditos">Un servicio profesional de <a href="https://ramonsalas.com" style="color: white;">ramonsalas.com</a></p>
+        </div>
     </footer>
 
-    <section class="copi" >
-      © 2025 Juan Gerardo Miranda | Tarjeta Digital
-
-    </section>
-
-    <section class="copi-2" >
-      Diseñado por: Ramón Salas 
-      <a href="https://ramonsalas.com/" target="_blank">
-        <img src="imgs/logo RS white theme.png" alt="" class="img-logo-rs" >
-      </a>
-    </section>
-    
-  </div>
-
-  <script>
-
-
-  const urlTarjeta = window.location.href;
-
-  document.getElementById("btnCompartir").addEventListener("click", async () => {
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title: "Tarjeta de Presentación",
-          text: "Te comparto mi tarjeta de presentación digital:",
-          url: urlTarjeta
+    <script>
+        // Smooth scroll para los enlaces internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
         });
-      } catch (error) {
-        console.log("No se pudo compartir:", error);
-      }
-    } else {
-      alert("Tu dispositivo no permite compartir desde el navegador.");
-    }
-  });
 
+        // Efecto de aparición suave al hacer scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-  document.getElementById("btnGuardar").addEventListener("click", () => {
-    const vcf = `
-BEGIN:VCARD
-VERSION:3.0
-FN:Juan Gerardo Miranda
-TITLE:Planificador Financiero
-TEL;TYPE=cell:+524445583022
-EMAIL:contacto@ramonsalas.com
-ORG:Servicios Financieros
-URL:${window.location.href}
-END:VCARD
-`;
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
 
-    const blob = new Blob([vcf], { type: "text/vcard" });
-    const url = URL.createObjectURL(blob);
-
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = "juan-gerardo-miranda.vcf";
-    link.click();
-
-    URL.revokeObjectURL(url);
-  });
-
-
-
-
-   
-  </script>
+        // Aplicar a las secciones
+        document.querySelectorAll('.plan, .beneficio').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>

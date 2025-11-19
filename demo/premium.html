@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tarjeta de presentación digital - Juan Gerardo Miranda" />
+  <title>Juan Gerardo Miranda - Planificador Financiero</title>
+  
+  <style>
+    :root {
+      --primary-color: #2563eb;
+      --secondary-color: #1e40af;
+      --text-color: #ffffff;
+      --text-secondary: #e5e7eb;
+      --bg-overlay: rgba(37, 99, 235, 0.9);
+      --radius: 20px;
+      --shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 1rem;
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      padding: 2rem 1.5rem;
+      background: var(--bg-overlay);
+      backdrop-filter: blur(10px);
+    }
+
+    .background {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      z-index: -1;
+    }
+
+    .profile-pic {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 4px solid white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      font-size: 1.6rem;
+      color: var(--text-color);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+
+    .description {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      background: white;
+      color: var(--primary-color);
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    .btn ion-icon {
+      font-size: 1.2rem;
+    }
+
+    .carrusel {
+      overflow: hidden;
+      width: 100%;
+      height: 120px;
+      margin-bottom: 2rem;
+      border-radius: 15px;
+      background: rgba(255,255,255,0.1);
+      padding: 10px 0;
+    }
+
+    .contenedor {
+      display: flex;
+      width: calc(120px * 8);
+      animation: mover 25s linear infinite;
+    }
+
+    .img-elemento {
+      width: 100px;
+      height: 100px;
+      margin: 0 10px;
+      border-radius: 10px;
+      object-fit: cover;
+      border: 2px solid white;
+    }
+
+    @keyframes mover {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(calc(-100px * 4 - 20px * 4)); }
+    }
+
+    .socials {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-social {
+      border-radius: 15px;
+      border: none;
+      background: rgba(255,255,255,0.9);
+      padding: 1rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .btn-social:hover {
+      transform: translateX(5px);
+      background: white;
+    }
+
+    .an-btn-social {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-decoration: none;
+      color: #333;
+      width: 100%;
+    }
+
+    .icon-social-1 {
+      font-size: 1.8rem;
+      color: var(--primary-color);
+    }
+
+    .text-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      flex: 1;
+      margin: 0 1rem;
+    }
+
+    .btn-title {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #1f2937;
+    }
+
+    .btn-text {
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+
+    .icon-social-2 {
+      color: #9ca3af;
+      font-size: 1.2rem;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 1rem;
+    }
+
+    .btn-footer {
+      background: white;
+      color: var(--primary-color);
+      border: none;
+      padding: 0.8rem 1.2rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+    }
+
+    .btn-footer:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .button-btn-icon-footer {
+      font-size: 1.2rem;
+    }
+
+    .credits {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      margin-top: 1rem;
+    }
+
+    .credits a {
+      color: white;
+      text-decoration: none;
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 1.5rem 1rem;
+      }
+      
+      .btn {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.8rem;
+      }
+    }
+
+    .btn-inicio-flotante {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--primary-color, #2563eb);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.btn-inicio-flotante:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  background: var(--secondary-color, #1e40af);
+}
+
+.btn-inicio-flotante ion-icon {
+  font-size: 1.2rem;
+}
+
+/* Ocultar texto en móviles para ahorrar espacio */
+@media (max-width: 480px) {
+  .btn-inicio-flotante .btn-text {
+    display: none;
+  }
+  
+  .btn-inicio-flotante {
+    padding: 12px;
+    border-radius: 50%;
+  }
+}
+  </style>
+
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+  <div class="card">
+    <div class="background"></div>
+
+    <img src="../assets/imgs/profile.jpg" alt="Juan Gerardo Miranda" class="profile-pic" />
+    <h1>Juan Gerardo Miranda</h1>
+    <h2>Planificador Financiero</h2>
+    <p class="description">Te acompaño a crear un plan financiero claro y sostenible para que vivas con tranquilidad y seguridad económica.</p>
+
+    <div class="buttons">
+      <button class="btn" onclick="window.open('mailto:contacto@juanmiranda.com')">
+        <ion-icon name="mail-outline"></ion-icon>
+        Email
+      </button>
+      <button class="btn" onclick="window.open('https://wa.me/524445583022?text=Hola,%20quiero%20más%20información%20sobre%20tus%20servicios')">
+        <ion-icon name="logo-whatsapp"></ion-icon>
+        WhatsApp
+      </button>
+    </div>
+
+    <div class="carrusel">
+      <div class="contenedor">
+        <img src="../assets/imgs/img-1.png" alt="Servicio 1" class="img-elemento">
+        <img src="../assets/imgs/img-2.jpg" alt="Servicio 2" class="img-elemento">
+        <img src="../assets/imgs/img-3.webp" alt="Servicio 3" class="img-elemento">
+        <img src="../assets/imgs/img-4.png" alt="Servicio 4" class="img-elemento">
+        <img src="../assets/imgs/img-1.png" alt="Servicio 1" class="img-elemento">
+        <img src="../assets/imgs/img-2.jpg" alt="Servicio 2" class="img-elemento">
+        <img src="../assets/imgs/img-3.webp" alt="Servicio 3" class="img-elemento">
+        <img src="../assets/imgs/img-4.png" alt="Servicio 4" class="img-elemento">
+      </div>
+    </div>
+
+    <div class="socials">
+      <button class="btn-social">
+        <a class="an-btn-social" href="https://facebook.com/juanmiranda" target="_blank">
+          <ion-icon name="logo-facebook" class="icon-social-1"></ion-icon>
+          <div class="text-btn">
+            <p class="btn-title">Facebook</p>
+            <p class="btn-text">Síguenos en Facebook</p>
+          </div>
+          <ion-icon name="chevron-forward-outline" class="icon-social-2"></ion-icon>
+        </a>
+      </button>
+
+      <button class="btn-social">
+        <a class="an-btn-social" href="https://instagram.com/juanmiranda" target="_blank">
+          <ion-icon name="logo-instagram" class="icon-social-1"></ion-icon>
+          <div class="text-btn">
+            <p class="btn-title">Instagram</p>
+            <p class="btn-text">Síguenos en Instagram</p>
+          </div>
+          <ion-icon name="chevron-forward-outline" class="icon-social-2"></ion-icon>
+        </a>
+      </button>
+
+      <button class="btn-social">
+        <a class="an-btn-social" href="https://linkedin.com/in/juanmiranda" target="_blank">
+          <ion-icon name="logo-linkedin" class="icon-social-1"></ion-icon>
+          <div class="text-btn">
+            <p class="btn-title">LinkedIn</p>
+            <p class="btn-text">Conecta conmigo</p>
+          </div>
+          <ion-icon name="chevron-forward-outline" class="icon-social-2"></ion-icon>
+        </a>
+      </button>
+    </div>
+
+    <footer>
+      <button class="btn-footer" id="btnCompartir">
+        <ion-icon name="share-social-outline" class="button-btn-icon-footer"></ion-icon>
+        Compartir
+      </button>
+      
+      <button class="btn-footer" id="btnGuardar">
+        <ion-icon name="person-add-outline" class="button-btn-icon-footer"></ion-icon>
+        Guardar Contacto
+      </button>
+    </footer>
+
+    <div class="credits">
+      © 2024 Juan Gerardo Miranda | 
+      <a href="https://ramonsalas.com" target="_blank">Diseñado por Ramón Salas</a>
+    </div>
+  </div>
+
+  <button class="btn-inicio-flotante" onclick="window.location.href = 'https://tudominio.com'">
+  <ion-icon name="home-outline"></ion-icon>
+  <span class="btn-text">Inicio</span>
+</button>
+
+
+  <script>
+    const urlTarjeta = window.location.href;
+
+    document.getElementById("btnCompartir").addEventListener("click", async () => {
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: "Juan Gerardo Miranda - Planificador Financiero",
+            text: "Te comparto mi tarjeta de presentación digital",
+            url: urlTarjeta
+          });
+        } catch (error) {
+          console.log("Error al compartir:", error);
+        }
+      } else {
+        navigator.clipboard.writeText(urlTarjeta).then(() => {
+          alert("¡Link copiado al portapapeles!");
+        });
+      }
+    });
+
+    document.getElementById("btnGuardar").addEventListener("click", () => {
+      const vcf = `BEGIN:VCARD
+VERSION:3.0
+FN:Juan Gerardo Miranda
+TITLE:Planificador Financiero
+TEL;TYPE=CELL:+524445583022
+EMAIL:contacto@juanmiranda.com
+URL:${window.location.href}
+NOTE:Te acompaño a crear un plan financiero claro y sostenible
+END:VCARD`;
+
+      const blob = new Blob([vcf], { type: "text/vcard;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "juan-gerardo-miranda.vcf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    });
+  </script>
+</body>
+</html>
