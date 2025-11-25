@@ -30,7 +30,7 @@
       align-items: center;
       min-height: 100vh;
       padding: 1rem;
-      padding-bottom: 100px; /* Espacio para botones fijos */
+      padding-bottom: 100px;
     }
 
     .card {
@@ -103,6 +103,111 @@
       color: var(--secondary-color);
     }
 
+    /* NUEVO: Modal de Miembros del Equipo */
+    .team-member-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .team-member-modal.active {
+      display: flex;
+    }
+
+    .member-modal-content {
+      background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%);
+      border-radius: var(--radius);
+      padding: 2rem;
+      max-width: 350px;
+      width: 90%;
+      position: relative;
+      text-align: center;
+    }
+
+    .member-modal-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .member-modal-photo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--secondary-color);
+    }
+
+    .member-modal-info {
+      text-align: left;
+      flex: 1;
+    }
+
+    .member-modal-name {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-color);
+      margin-bottom: 0.3rem;
+    }
+
+    .member-modal-role {
+      font-size: 0.9rem;
+      color: var(--secondary-color);
+      font-weight: 500;
+    }
+
+    .member-modal-description {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+
+    .member-contact-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .member-contact-btn {
+      padding: 0.8rem;
+      border: none;
+      border-radius: 10px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+    }
+
+    .member-contact-btn.whatsapp {
+      background: #25D366;
+      color: white;
+    }
+
+    .member-contact-btn.email {
+      background: rgba(255, 255, 255, 0.9);
+      color: #333;
+    }
+
+    .member-contact-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
     .team-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -118,6 +223,7 @@
       border-radius: 12px;
       transition: all 0.3s ease;
       border: 1px solid rgba(255, 255, 255, 0.1);
+      cursor: pointer;
     }
 
     .team-member:hover {
@@ -147,8 +253,149 @@
       color: var(--text-secondary);
     }
 
-    /* NUEVO: Modal de Servicios */
-    .services-modal {
+    /* NUEVO: Botones de Servicios y Links en columnas - CORREGIDO */
+    .action-buttons-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .action-button-full {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 1.5rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--text-color);
+      text-decoration: none;
+      width: 100%;
+    }
+
+    .action-button-full:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateX(5px);
+    }
+
+    .action-button-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex: 1;
+    }
+
+    .action-button-icon {
+      font-size: 1.8rem;
+      color: var(--secondary-color);
+    }
+
+    .action-button-text {
+      text-align: left;
+    }
+
+    .action-button-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+
+    .action-button-value {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    .action-button-arrow {
+      color: var(--text-secondary);
+      font-size: 1.2rem;
+    }
+
+    /* NUEVO: Sección QR que cubre todo el ancho - CORREGIDA */
+    .qr-section-full {
+      text-align: center;
+      margin-bottom: 2rem;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(15px);
+      padding: 2rem 1.5rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      position: relative;
+      z-index: 2;
+      width: 100%;
+    }
+
+    .qr-section-full::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(120, 119, 198, 0.05));
+      border-radius: 12px;
+      z-index: -1;
+    }
+
+    .qr-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      color: var(--text-color);
+      font-size: 1.1rem;
+    }
+
+    .qr-title ion-icon {
+      color: var(--secondary-color);
+    }
+
+    .qr-code {
+      width: 140px;
+      height: 140px;
+      background: linear-gradient(135deg, #ffffff, #f0f4ff);
+      margin: 0 auto;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #1e3a8a;
+      font-size: 0.9rem;
+      padding: 15px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      border: 2px solid rgba(0, 212, 255, 0.3);
+      position: relative;
+    }
+
+    .qr-code::after {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, transparent, rgba(0, 212, 255, 0.2), transparent);
+      border-radius: 14px;
+      z-index: -1;
+    }
+
+    .qr-text {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-top: 1rem;
+      font-weight: 500;
+    }
+
+    /* MODALES - CORREGIDOS (ocultos por defecto) */
+    .team-member-modal,
+    .services-modal,
+    .links-modal {
       display: none;
       position: fixed;
       top: 0;
@@ -162,19 +409,24 @@
       align-items: center;
     }
 
-    .services-modal.active {
+    .team-member-modal.active,
+    .services-modal.active,
+    .links-modal.active {
       display: flex;
     }
 
-    .modal-content {
+    .modal-content,
+    .member-modal-content {
       background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%);
       border-radius: var(--radius);
       padding: 2rem;
-      max-width: 400px;
+      max-width: 350px;
       width: 90%;
-      max-height: 80vh;
-      overflow-y: auto;
       position: relative;
+    }
+
+    .member-modal-content {
+      text-align: center;
     }
 
     .modal-close {
@@ -320,6 +572,7 @@
       color: var(--text-secondary);
     }
 
+    /* Resto de estilos... */
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -361,7 +614,6 @@
       color: var(--text-color);
     }
 
-    /* NUEVO: Botones fijos en la parte inferior */
     .fixed-action-buttons {
       position: fixed;
       bottom: 20px;
@@ -559,12 +811,12 @@
           Nuestro Equipo
         </div>
         <div class="team-grid">
-          <div class="team-member">
+          <div class="team-member" onclick="openTeamMemberModal('maria')">
             <img src="../assets/imgs/profile1-empresarial-card.png" alt="María González" class="member-photo" />
             <div class="member-name">María González</div>
             <div class="member-role">CEO & Fundadora</div>
           </div>
-          <div class="team-member">
+          <div class="team-member" onclick="openTeamMemberModal('roberto')">
             <img src="../assets/imgs/profile2-empresarial-card.png" alt="Roberto Sánchez" class="member-photo" />
             <div class="member-name">Roberto Sánchez</div>
             <div class="member-role">CTO</div>
@@ -572,23 +824,32 @@
         </div>
       </div>
 
-      <div class="section">
-        <div class="contact-grid">
-          <!-- Botón Servicios -->
-          <div class="contact-card" onclick="openServicesModal()">
-            <ion-icon name="briefcase-outline"></ion-icon>
-            <div class="contact-label">Servicios</div>
-            <div class="contact-value">Ver todos</div>
+      <!-- BOTONES SERVICIOS Y LINKS - CORREGIDOS -->
+      <div class="action-buttons-grid">
+        <div class="action-button-full" onclick="openServicesModal()">
+          <div class="action-button-info">
+            <ion-icon name="briefcase-outline" class="action-button-icon"></ion-icon>
+            <div class="action-button-text">
+              <div class="action-button-label">Servicios</div>
+              <div class="action-button-value">Conoce nuestros servicios profesionales</div>
+            </div>
           </div>
+          <ion-icon name="chevron-forward-outline" class="action-button-arrow"></ion-icon>
+        </div>
 
-          <!-- Botón Links -->
-          <div class="contact-card" onclick="openLinksModal()">
-            <ion-icon name="link-outline"></ion-icon>
-            <div class="contact-label">Links</div>
-            <div class="contact-value">Recursos</div>
+        <div class="action-button-full" onclick="openLinksModal()">
+          <div class="action-button-info">
+            <ion-icon name="link-outline" class="action-button-icon"></ion-icon>
+            <div class="action-button-text">
+              <div class="action-button-label">Links</div>
+              <div class="action-button-value">Recursos y enlaces de interés</div>
+            </div>
           </div>
+          <ion-icon name="chevron-forward-outline" class="action-button-arrow"></ion-icon>
         </div>
       </div>
+
+      
 
       <div class="section">
         <div class="section-title">
@@ -632,6 +893,18 @@
         </div>
       </div>
 
+      <!-- SECCIÓN QR - CORREGIDA (AHORA SÍ SE VE) -->
+      <div class="qr-section-full">
+        <div class="qr-title">
+          <ion-icon name="qr-code-outline"></ion-icon>
+          QR Corporativo
+        </div>
+        <div class="qr-code">
+          <span>QR CODE</span>
+        </div>
+        <div class="qr-text">Escanee para contactar a nuestro equipo</div>
+      </div>
+
       <div class="analytics-section">
         <div class="analytics-title">
           <ion-icon name="stats-chart-outline"></ion-icon>
@@ -650,96 +923,7 @@
       </div>
     </div>
 
-    <!-- NUEVA SECCIÓN: QR -->
-<div class="qr-section">
-  <div class="qr-title">
-    <ion-icon name="qr-code-outline"></ion-icon>
-    QR Corporativo
-  </div>
-  <div class="qr-code">
-    <span>QR CODE</span>
-  </div>
-  <div class="qr-text">Escanee para contactar a nuestro equipo</div>
-</div>
-
-<style>
-/* NUEVO: Sección QR para Empresarial */
-.qr-section {
-  text-align: center;
-  margin-bottom: 2rem;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(15px);
-  padding: 1.5rem;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  position: relative;
-  z-index: 2;
-}
-
-.qr-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(120, 119, 198, 0.05));
-  border-radius: 12px;
-  z-index: -1;
-}
-
-.qr-title {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-  font-weight: 600;
-  color: var(--text-color);
-  font-size: 1.1rem;
-}
-
-.qr-title ion-icon {
-  color: var(--secondary-color); /* Azul corporativo */
-}
-
-.qr-code {
-  width: 120px;
-  height: 120px;
-  background: linear-gradient(135deg, #ffffff, #f0f4ff);
-  margin: 0 auto;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  color: #1e3a8a;
-  font-size: 0.8rem;
-  padding: 10px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-  border: 2px solid rgba(0, 212, 255, 0.3);
-  position: relative;
-}
-
-.qr-code::after {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: linear-gradient(45deg, transparent, rgba(0, 212, 255, 0.2), transparent);
-  border-radius: 14px;
-  z-index: -1;
-}
-
-.qr-text {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  margin-top: 0.8rem;
-  font-weight: 500;
-}
-</style>
+    
 
     <div class="credits">
       © 2024 Innovate Solutions |
@@ -747,7 +931,33 @@
     </div>
   </div>
 
-  <!-- Modal de Servicios -->
+  <!-- MODALES (ocultos por defecto) -->
+  <div class="team-member-modal" id="teamMemberModal">
+    <div class="member-modal-content">
+      <button class="modal-close" onclick="closeTeamMemberModal()">
+        <ion-icon name="close-outline"></ion-icon>
+      </button>
+      <div class="member-modal-header">
+        <img id="modalMemberPhoto" src="" alt="" class="member-modal-photo" />
+        <div class="member-modal-info">
+          <div id="modalMemberName" class="member-modal-name"></div>
+          <div id="modalMemberRole" class="member-modal-role"></div>
+        </div>
+      </div>
+      <div id="modalMemberDescription" class="member-modal-description"></div>
+      <div class="member-contact-buttons">
+        <button id="modalWhatsApp" class="member-contact-btn whatsapp" onclick="contactViaWhatsApp()">
+          <ion-icon name="logo-whatsapp"></ion-icon>
+          WhatsApp
+        </button>
+        <button id="modalEmail" class="member-contact-btn email" onclick="contactViaEmail()">
+          <ion-icon name="mail-outline"></ion-icon>
+          Email
+        </button>
+      </div>
+    </div>
+  </div>
+
   <div class="services-modal" id="servicesModal">
     <div class="modal-content">
       <button class="modal-close" onclick="closeServicesModal()">
@@ -766,7 +976,7 @@
             <div class="service-modal-name">Desarrollo Web</div>
           </div>
           <div class="service-detail">
-            <p>Creación de aplicaciones web modernas y sitios corporativos con las últimas tecnologías. Desarrollo a medida con React, Vue.js y Node.js.</p>
+            <p>Creación de aplicaciones web modernas y sitios corporativos con las últimas tecnologías.</p>
           </div>
         </div>
         <div class="service-modal-item">
@@ -777,15 +987,13 @@
             <div class="service-modal-name">Consultoría TI</div>
           </div>
           <div class="service-detail">
-            <p>Optimización de procesos tecnológicos, migración a la nube, implementación de mejores prácticas y estrategias digitales para tu negocio.</p>
+            <p>Optimización de procesos tecnológicos y estrategias digitales para tu negocio.</p>
           </div>
         </div>
       </div>
     </div>
   </div>
-  
 
-  <!-- Modal de Links -->
   <div class="links-modal" id="linksModal">
     <div class="modal-content">
       <button class="modal-close" onclick="closeLinksModal()">
@@ -810,27 +1018,11 @@
             <div class="link-url">Artículos y noticias</div>
           </div>
         </a>
-        <a href="https://innovatesolutions.com/cotizador" class="link-item" target="_blank">
-          <ion-icon name="calculator-outline" class="link-icon"></ion-icon>
-          <div class="link-info">
-            <div class="link-title">Cotizador</div>
-            <div class="link-url">Solicitar presupuesto</div>
-          </div>
-        </a>
-        <a href="https://innovatesolutions.com/contacto" class="link-item" target="_blank">
-          <ion-icon name="chatbubble-outline" class="link-icon"></ion-icon>
-          <div class="link-info">
-            <div class="link-title">Contacto</div>
-            <div class="link-url">Formulario directo</div>
-          </div>
-        </a>
       </div>
     </div>
   </div>
 
-  
-
-  <!-- Botones Fijos en la Parte Inferior -->
+  <!-- Botones Fijos -->
   <div class="fixed-action-buttons">
     <button class="action-btn primary" id="btnAgendar">
       <ion-icon name="calendar-outline"></ion-icon>
@@ -848,7 +1040,59 @@
   </button>
 
   <script>
-    // Funciones para modales
+    // Datos de los miembros del equipo
+    const teamMembers = {
+      'maria': {
+        name: 'María González',
+        role: 'CEO & Fundadora',
+        photo: '../assets/imgs/profile1-empresarial-card.png',
+        description: 'Más de 10 años de experiencia en consultoría tecnológica y transformación digital. Especialista en estrategias de crecimiento y liderazgo de equipos multidisciplinarios.',
+        whatsapp: '+525551234567',
+        email: 'maria@innovatesolutions.com'
+      },
+      'roberto': {
+        name: 'Roberto Sánchez',
+        role: 'CTO',
+        photo: '../assets/imgs/profile2-empresarial-card.png',
+        description: 'Experto en arquitectura de software y desarrollo de soluciones escalables. Líder técnico con amplia experiencia en tecnologías cloud y DevOps.',
+        whatsapp: '+525551234568',
+        email: 'roberto@innovatesolutions.com'
+      }
+    };
+
+    let currentMember = null;
+
+    // Funciones para modal de miembros del equipo
+    function openTeamMemberModal(memberId) {
+      const member = teamMembers[memberId];
+      if (member) {
+        currentMember = member;
+        document.getElementById('modalMemberPhoto').src = member.photo;
+        document.getElementById('modalMemberName').textContent = member.name;
+        document.getElementById('modalMemberRole').textContent = member.role;
+        document.getElementById('modalMemberDescription').textContent = member.description;
+        document.getElementById('teamMemberModal').classList.add('active');
+      }
+    }
+
+    function closeTeamMemberModal() {
+      document.getElementById('teamMemberModal').classList.remove('active');
+      currentMember = null;
+    }
+
+    function contactViaWhatsApp() {
+      if (currentMember) {
+        window.open(`https://wa.me/${currentMember.whatsapp}?text=Hola%20${currentMember.name.split(' ')[0]},%20me%20interesa%20contactarte`, '_blank');
+      }
+    }
+
+    function contactViaEmail() {
+      if (currentMember) {
+        window.open(`mailto:${currentMember.email}?subject=Contacto%20desde%20tarjeta%20digital&body=Hola%20${currentMember.name.split(' ')[0]},`, '_blank');
+      }
+    }
+
+    // Funciones para modales existentes
     function openServicesModal() {
       document.getElementById('servicesModal').classList.add('active');
     }
@@ -867,15 +1111,15 @@
 
     // Cerrar modales al hacer clic fuera
     document.addEventListener('click', function(event) {
-      const servicesModal = document.getElementById('servicesModal');
-      const linksModal = document.getElementById('linksModal');
-      
-      if (event.target === servicesModal) {
-        closeServicesModal();
-      }
-      if (event.target === linksModal) {
-        closeLinksModal();
-      }
+      const modals = ['teamMemberModal', 'servicesModal', 'linksModal'];
+      modals.forEach(modalId => {
+        const modal = document.getElementById(modalId);
+        if (event.target === modal) {
+          if (modalId === 'teamMemberModal') closeTeamMemberModal();
+          if (modalId === 'servicesModal') closeServicesModal();
+          if (modalId === 'linksModal') closeLinksModal();
+        }
+      });
     });
 
     const urlTarjeta = window.location.href;
