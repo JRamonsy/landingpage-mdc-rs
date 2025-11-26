@@ -228,6 +228,109 @@
             margin-top: 20px;
         }
 
+        .footer-links {
+            margin-top: 15px;
+        }
+
+        .footer-link {
+            background: none;
+            border: none;
+            color: white;
+            text-decoration: underline;
+            cursor: pointer;
+            font-size: 0.9rem;
+            padding: 5px 10px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: #e0e7ff;
+        }
+
+        /* Modal Aviso de Privacidad */
+        .privacy-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .privacy-modal-content {
+            background: white;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 700px;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 2rem;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .privacy-modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #3498db;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .privacy-modal-close:hover {
+            background: rgba(52, 152, 219, 0.1);
+        }
+
+        .privacy-modal-title {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .privacy-modal-text {
+            color: #333;
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+
+        .privacy-modal-text h3 {
+            color: #3498db;
+            margin: 1.5rem 0 0.5rem 0;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .privacy-modal-text p {
+            margin-bottom: 1rem;
+        }
+
+        .privacy-modal-text ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .privacy-modal-text li {
+            margin-bottom: 0.5rem;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
@@ -250,6 +353,11 @@
                 margin-right: 0;
                 margin-bottom: 10px;
             }
+            
+            .privacy-modal-content {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
         }
     </style>
 </head>
@@ -259,10 +367,10 @@
         <header>
             <div class="logo-container">
                 <div class="logo">
-                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="5" y="5" width="30" height="30" rx="5" fill="white"/>
+                    <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="2" y="5" width="45" height="40" rx="8" fill="white"/>
                         <path d="M15 15H25V25H15V15Z" fill="#3498db"/>
-                        <circle cx="20" cy="12" r="2" fill="#e74c3c"/>
+                        <text x="22" y="35" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#e74c3c">RS</text>
                     </svg>
                 </div>
                 <div class="logo-text">México Digital Cards</div>
@@ -318,7 +426,7 @@
                 <!-- Plan Empresarial -->
                 <div class="plan empresarial">
                     <h3>Empresarial</h3>
-                    <div class="precio">$1100 <span>MXN</span></div>
+                    <div class="precio">$1200 <span>MXN</span></div>
                     <ul class="caracteristicas">
                         <li>Todo lo del plan Premium +</li>
                         <li>Múltiples perfiles (4 máximo)</li>
@@ -379,13 +487,77 @@
     <footer>
         <div class="container">
             <p>&copy; 2025 | México Digital Cards. Todos los derechos reservados.</p>
+            <div class="footer-links">
+                <button class="footer-link" id="btnPrivacyNotice">Aviso de Privacidad</button>
+            </div>
             <p class="creditos">Un servicio profesional de <a href="https://ramonsalas.com" style="color: white;">ramonsalas.com</a></p>
-            <img src="assets\imgs\logo RS white theme.png" alt=""
-            style="width: 100px;
-            border-radius: 15px;"
-            >
+            <img src="assets\imgs\logo RS white theme.png" alt="" style="width: 100px; border-radius: 15px;">
         </div>
     </footer>
+
+    <!-- Modal Aviso de Privacidad -->
+    <div class="privacy-modal" id="privacyModal">
+        <div class="privacy-modal-content">
+            <button class="privacy-modal-close" id="privacyModalClose">
+                <span>×</span>
+            </button>
+
+            <h2 class="privacy-modal-title">Aviso de Privacidad</h2>
+            
+            <div class="privacy-modal-text">
+                <h3>RESPONSABLE</h3>
+                <p><strong>México Digital Cards</strong>, operado por <strong>Ramón Salas</strong>, es responsable del tratamiento de sus datos personales. Para oír y recibir notificaciones relacionadas con el tratamiento de datos personales, puede contactarnos a través del correo electrónico: <strong>ramon.salaspi1.1@gmail.com</strong></p>
+                
+                <h3>FINALIDADES DEL TRATAMIENTO</h3>
+                <p>Sus datos personales serán utilizados para las siguientes finalidades:</p>
+                
+                <p><strong>Finalidades Primarias:</strong></p>
+                <ul>
+                    <li>Proveer los servicios de tarjetas digitales contratados</li>
+                    <li>Mantener comunicación relacionada con el servicio</li>
+                    <li>Gestionar pagos y facturación</li>
+                    <li>Proveer soporte técnico y atención al cliente</li>
+                </ul>
+                
+                <p><strong>Finalidades Secundarias:</strong></p>
+                <ul>
+                    <li>Envío de información sobre nuevos productos o servicios</li>
+                    <li>Realización de encuestas de satisfacción</li>
+                    <li>Promociones especiales y ofertas</li>
+                </ul>
+                
+                <h3>DATOS RECABADOS</h3>
+                <p>Para las finalidades señaladas, podemos recabar los siguientes datos personales:</p>
+                <ul>
+                    <li>Nombre completo</li>
+                    <li>Correo electrónico</li>
+                    <li>Número telefónico</li>
+                    <li>Información profesional (empresa, puesto)</li>
+                    <li>Información de contacto para la tarjeta digital</li>
+                    <li>Datos de redes sociales</li>
+                    <li>Información de pago (procesada de forma segura)</li>
+                </ul>
+                
+                <h3>TRANSFERENCIA DE DATOS</h3>
+                <p>Sus datos personales pueden ser transferidos y tratados dentro y fuera del país por personas distintas a esta empresa para:</p>
+                <ul>
+                    <li>Proveedores de servicios de hosting y plataforma</li>
+                    <li>Proveedores de servicios de pago</li>
+                    <li>Autoridades competentes cuando sea requerido por ley</li>
+                </ul>
+                
+                <h3>MEDIOS PARA EJERCER DERECHOS ARCO</h3>
+                    <p>Usted tiene derecho a Acceder, Rectificar y Cancelar sus datos personales, así como a Oponerse al tratamiento de los mismos. Para ejercer estos derechos, debe enviar una solicitud al correo: <strong>ramon.salaspi1.1@gmail.com</strong></p>
+                
+                <h3>MODIFICACIONES AL AVISO DE PRIVACIDAD</h3>
+                <p>Nos reservamos el derecho de efectuar en cualquier momento modificaciones o actualizaciones al presente aviso de privacidad. Estas modificaciones estarán disponibles a través de nuestro sitio web.</p>
+                
+                <p><strong>Fecha de última actualización:</strong> 15 de Enero de 2025</p>
+                
+                <p>Al utilizar nuestros servicios, usted acepta los términos de este aviso de privacidad.</p>
+            </div>
+        </div>
+    </div>
 
     <script>
         // Smooth scroll para los enlaces internos
@@ -419,6 +591,35 @@
             el.style.transform = 'translateY(20px)';
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(el);
+        });
+
+        // Funcionalidad para el modal de aviso de privacidad
+        const privacyModal = document.getElementById('privacyModal');
+        const btnPrivacyNotice = document.getElementById('btnPrivacyNotice');
+        const privacyModalClose = document.getElementById('privacyModalClose');
+
+        // Abrir modal
+        btnPrivacyNotice.addEventListener('click', function() {
+            privacyModal.style.display = 'flex';
+        });
+
+        // Cerrar modal
+        privacyModalClose.addEventListener('click', function() {
+            privacyModal.style.display = 'none';
+        });
+
+        // Cerrar modal al hacer clic fuera del contenido
+        privacyModal.addEventListener('click', function(e) {
+            if (e.target === privacyModal) {
+                privacyModal.style.display = 'none';
+            }
+        });
+
+        // Cerrar modal con tecla Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && privacyModal.style.display === 'flex') {
+                privacyModal.style.display = 'none';
+            }
         });
     </script>
 </body>

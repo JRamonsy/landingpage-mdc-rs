@@ -235,12 +235,43 @@
       margin-top: 1rem;
       position: relative;
       z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .credits-p {
+      display: flex;  
+    }
+    
+    .btn-credits {
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      text-decoration: underline;
+      cursor: pointer;
+      margin-left: .2rem;
+      font-size: 0.75rem;
+      padding: 0;
+    }
+
+    .btn-credits:hover {
+      color: white;
     }
 
     .credits a {
       color: var(--text-color);
       text-decoration: none;
       font-weight: 500;
+      padding: 1rem 0;
+    }
+
+    .credits a:hover {
+      color:#e0e7ff ;
+    }
+
+    .credits-span {
+      text-decoration: underline;
     }
 
     .btn-inicio-flotante {
@@ -274,6 +305,140 @@
       font-size: 1.2rem;
     }
 
+    /* NUEVO: Modal Aviso de privacidad */
+    .privacy-notice-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+
+    .privacy-modal-content {
+      background: white;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 500px;
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 2rem;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .privacy-modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #667eea;
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .privacy-modal-close:hover {
+      background: rgba(102, 126, 234, 0.1);
+    }
+
+    .privacy-modal-title {
+      color: #667eea;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .privacy-modal-text {
+      color: #333;
+      line-height: 1.6;
+      font-size: 0.9rem;
+    }
+
+    .privacy-modal-text h3 {
+      color: #667eea;
+      margin: 1.5rem 0 0.5rem 0;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .privacy-modal-text p {
+      margin-bottom: 1rem;
+    }
+
+    .privacy-modal-text ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .privacy-modal-text li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* NUEVO: Sección QR para Básica */
+    .qr-section {
+      text-align: center;
+      margin-bottom: 2rem;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      padding: 1.5rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .qr-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      color: var(--text-color);
+      font-size: 1.1rem;
+    }
+
+    .qr-title ion-icon {
+      color: #ffd700; /* Dorado para contraste */
+    }
+
+    .qr-code {
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(135deg, #ffffff, #f8fafc);
+      margin: 0 auto;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #667eea;
+      font-size: 0.8rem;
+      padding: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      border: 2px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .qr-text {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-top: 0.8rem;
+      font-weight: 500;
+    }
+
     @media (max-width: 480px) {
       .card {
         padding: 1.5rem 1rem;
@@ -290,6 +455,11 @@
       .btn-inicio-flotante {
         padding: 12px;
         border-radius: 50%;
+      }
+      
+      .privacy-modal-content {
+        padding: 1.5rem;
+        margin: 1rem;
       }
     }
   </style>
@@ -343,68 +513,16 @@
     </div>
 
     <!-- NUEVA SECCIÓN: QR -->
-<div class="qr-section">
-  <div class="qr-title">
-    <ion-icon name="qr-code-outline"></ion-icon>
-    QR Personalizado
-  </div>
-  <div class="qr-code">
-    <span>QR CODE</span>
-  </div>
-  <div class="qr-text">Escanéame para guardar mi contacto</div>
-</div>
-
-<style>
-/* NUEVO: Sección QR para Básica */
-.qr-section {
-  text-align: center;
-  margin-bottom: 2rem;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  padding: 1.5rem;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.qr-title {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-  font-weight: 600;
-  color: var(--text-color);
-  font-size: 1.1rem;
-}
-
-.qr-title ion-icon {
-  color: #ffd700; /* Dorado para contraste */
-}
-
-.qr-code {
-  width: 120px;
-  height: 120px;
-  background: linear-gradient(135deg, #ffffff, #f8fafc);
-  margin: 0 auto;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  color: #667eea;
-  font-size: 0.8rem;
-  padding: 10px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-  border: 2px solid rgba(255, 255, 255, 0.5);
-}
-
-.qr-text {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  margin-top: 0.8rem;
-  font-weight: 500;
-}
-</style>
+    <div class="qr-section">
+      <div class="qr-title">
+        <ion-icon name="qr-code-outline"></ion-icon>
+        QR Personalizado
+      </div>
+      <div class="qr-code">
+        <span>QR CODE</span>
+      </div>
+      <div class="qr-text">Escanéame para guardar mi contacto</div>
+    </div>
 
     <div class="action-buttons">
       <button class="action-btn primary" id="btnCompartir">
@@ -418,8 +536,73 @@
     </div>
 
     <div class="credits">
-      © 2024 Ana García | 
-      <a href="https://mexicodigitalcards.com" target="_blank">Tarjeta Digital por Ramón Salas</a>
+      <div class="credits-p">
+        <p>© 2025 Ana García |</p>
+        <button class="btn-credits" id="btnPrivacyNotice">Aviso de Privacidad</button>
+      </div>
+      <a href="https://mexicodigitalcards.com" target="_blank">Creado por: 
+        <span class="credits-span" > 
+          México Digital Cards</a>
+        </span>
+    </div>
+  </div>
+
+  <!-- MODAL AVISO DE PRIVACIDAD -->
+  <div class="privacy-notice-modal" id="privacyNoticeModal">
+    <div class="privacy-modal-content">
+      <button class="privacy-modal-close" id="privacyModalClose">
+        <ion-icon name="close-outline"></ion-icon>
+      </button>
+
+      <h2 class="privacy-modal-title">Aviso de Privacidad</h2>
+
+      <div class="privacy-modal-text">
+        <h3>Ana García López</h3>
+        <p><strong>Diseñadora Gráfica Freelance</strong></p>
+        
+        <p>En cumplimiento con la Ley Federal de Protección de Datos Personales en Posesión de los Particulares, hago de su conocimiento lo siguiente:</p>
+        
+        <h3>1. Identidad y Domicilio del Responsable</h3>
+        <p>Ana García López, diseñadora gráfica freelance, es responsable del tratamiento de sus datos personales. Para efectos de contacto, puede dirigirse al correo electrónico ana.garcia.diseno@ejemplo.com o al teléfono 555 123 4567.</p>
+        
+        <h3>2. Finalidades del Tratamiento</h3>
+        <p>Los datos personales recabados serán utilizados para las siguientes finalidades:</p>
+        
+        <p><strong>Finalidades Primarias</strong></p>
+        <ul>
+          <li>Elaboración de cotizaciones, propuestas y contratos de servicios de diseño.</li>
+          <li>Comunicación durante el desarrollo de proyectos de diseño.</li>
+          <li>Facturación y entrega de trabajos finalizados.</li>
+        </ul>
+        
+        <p><strong>Finalidades Secundarias</strong></p>
+        <p>Si usted está de acuerdo, sus datos también podrán ser utilizados para:</p>
+        <ul>
+          <li>Envío de portafolio actualizado y nuevos servicios</li>
+          <li>Encuestas de satisfacción del servicio</li>
+        </ul>
+        <p><em>Nota: Puede oponerse al tratamiento de sus datos personales para estas finalidades en cualquier momento.</em></p>
+        
+        <h3>3. Datos Personales Recabados</h3>
+        <p>Para cumplir con las finalidades anteriores, se recopilarán:</p>
+        <ul>
+          <li>Nombre completo y datos de contacto</li>
+          <li>Información de la empresa o proyecto</li>
+          <li>Requerimientos específicos del diseño solicitado</li>
+        </ul>
+        
+        <h3>4. Transferencia de Datos</h3>
+        <p>Sus datos personales no serán transferidos a terceros sin su consentimiento, excepto cuando sea necesario para procesos de impresión o producción con proveedores autorizados.</p>
+        
+        <h3>5. Medios para Ejercer Derechos ARCO</h3>
+        <p>Para ejercer sus derechos de Acceso, Rectificación, Cancelación u Oposición, envíe su solicitud a ana.garcia.diseno@ejemplo.com incluyendo su nombre completo y descripción de la solicitud.</p>
+        
+        <p><em>Fecha de última actualización: 15 de Enero de 2025.</em></p>
+        
+        <p>Declaro que he leído, comprendido y acepto el tratamiento de mis datos personales conforme a lo establecido en este aviso de privacidad.</p>
+      </div>
+      
+
     </div>
   </div>
 
@@ -470,6 +653,35 @@ END:VCARD`;
       link.click();
       document.body.removeChild(link);
       URL.revokeObjectURL(url);
+    });
+
+    // Funcionalidad para el modal de aviso de privacidad
+    const privacyModal = document.getElementById('privacyNoticeModal');
+    const btnPrivacyNotice = document.getElementById('btnPrivacyNotice');
+    const privacyModalClose = document.getElementById('privacyModalClose');
+
+    // Abrir modal
+    btnPrivacyNotice.addEventListener('click', function() {
+      privacyModal.style.display = 'flex';
+    });
+
+    // Cerrar modal
+    privacyModalClose.addEventListener('click', function() {
+      privacyModal.style.display = 'none';
+    });
+
+    // Cerrar modal al hacer clic fuera del contenido
+    privacyModal.addEventListener('click', function(e) {
+      if (e.target === privacyModal) {
+        privacyModal.style.display = 'none';
+      }
+    });
+
+    // Cerrar modal con tecla Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && privacyModal.style.display === 'flex') {
+        privacyModal.style.display = 'none';
+      }
     });
   </script>
 </body>

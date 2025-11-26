@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Tarjeta digital premium de Carlos Rodríguez - Consultor de Marketing" />
   <title>Carlos Rodríguez - Consultor de Marketing</title>
-  
+
   <style>
     :root {
       --primary-color: #ffffff;
@@ -30,7 +31,8 @@
       align-items: center;
       min-height: 100vh;
       padding: 1rem;
-      padding-bottom: 100px; /* Espacio para botones fijos */
+      padding-bottom: 100px;
+      /* Espacio para botones fijos */
     }
 
     .card {
@@ -49,9 +51,17 @@
     }
 
     @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
     }
 
     .card::before {
@@ -61,7 +71,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: 
+      background:
         radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
         radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
       pointer-events: none;
@@ -74,7 +84,7 @@
       object-fit: cover;
       margin-bottom: 1.5rem;
       border: 4px solid rgba(255, 255, 255, 0.3);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
       position: relative;
       z-index: 2;
     }
@@ -86,7 +96,7 @@
       font-weight: 700;
       position: relative;
       z-index: 2;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
 
     h2 {
@@ -134,12 +144,12 @@
       align-items: center;
       gap: 0.5rem;
       font-weight: 600;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
 
     .btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
       background: white;
     }
 
@@ -174,12 +184,17 @@
       border-radius: 10px;
       object-fit: cover;
       border: 2px solid rgba(255, 255, 255, 0.3);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
     @keyframes mover {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(calc(-100px * 4 - 20px * 4)); }
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(calc(-100px * 4 - 20px * 4));
+      }
     }
 
     /* NUEVO: Sección de Servicios */
@@ -278,7 +293,7 @@
       color: #333;
       font-size: 0.8rem;
       padding: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
 
     .qr-text {
@@ -401,12 +416,43 @@
       margin-top: 1rem;
       position: relative;
       z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .credits-p {
+      display: flex;
+    }
+
+    .btn-credits {
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      text-decoration: underline;
+      cursor: pointer;
+      margin-left: .2rem;
+      font-size: 0.75rem;
+      padding: 0;
+    }
+
+    .btn-credits:hover {
+      color: white;
     }
 
     .credits a {
       color: var(--text-color);
       text-decoration: none;
       font-weight: 500;
+      padding: 1rem 0;
+    }
+
+    .credits a:hover {
+      color: #e0e7ff;
+    }
+
+    .credits-span {
+      text-decoration: underline;
     }
 
     .btn-inicio-flotante {
@@ -419,7 +465,7 @@
       border-radius: 50px;
       padding: 12px 20px;
       cursor: pointer;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
       display: flex;
       align-items: center;
       gap: 8px;
@@ -432,7 +478,7 @@
 
     .btn-inicio-flotante:hover {
       transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
       background: white;
     }
 
@@ -440,29 +486,113 @@
       font-size: 1.2rem;
     }
 
+    /* NUEVO: Modal Aviso de privacidad */
+    .privacy-notice-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+
+    .privacy-modal-content {
+      background: white;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 500px;
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 2rem;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .privacy-modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #667eea;
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .privacy-modal-close:hover {
+      background: rgba(102, 126, 234, 0.1);
+    }
+
+    .privacy-modal-title {
+      color: #667eea;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .privacy-modal-text {
+      color: #333;
+      line-height: 1.6;
+      font-size: 0.9rem;
+    }
+
+    .privacy-modal-text h3 {
+      color: #667eea;
+      margin: 1.5rem 0 0.5rem 0;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .privacy-modal-text p {
+      margin-bottom: 1rem;
+    }
+
+    .privacy-modal-text ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .privacy-modal-text li {
+      margin-bottom: 0.5rem;
+    }
+
     @media (max-width: 480px) {
       .card {
         padding: 1.5rem 1rem;
       }
-      
+
       .buttons {
         flex-direction: column;
       }
-      
+
       .services-grid {
         grid-template-columns: 1fr;
       }
-      
+
       .btn-inicio-flotante .btn-text {
         display: none;
       }
-      
+
       .btn-inicio-flotante {
         padding: 12px;
         border-radius: 50%;
         bottom: 70px;
       }
-      
+
       .fixed-action-buttons {
         width: 95%;
         gap: 0.8rem;
@@ -473,19 +603,22 @@
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
+
 <body>
   <div class="card">
     <img src="../assets/imgs/profile-empresarial-card.png" alt="Carlos Rodríguez" class="profile-pic" />
     <h1>Carlos Rodríguez</h1>
     <h2>Consultor de Marketing Digital</h2>
-    <p class="description">Ayudo a negocios a crecer su presencia online con estrategias de marketing digital comprobadas. Especialista en SEO y redes sociales.</p>
+    <p class="description">Ayudo a negocios a crecer su presencia online con estrategias de marketing digital
+      comprobadas. Especialista en SEO y redes sociales.</p>
 
     <div class="buttons">
       <button class="btn" onclick="window.open('mailto:carlos@marketingpro.com')">
         <ion-icon name="mail-outline"></ion-icon>
         Email
       </button>
-      <button class="btn" onclick="window.open('https://wa.me/525551234567?text=Hola%20Carlos,%20quiero%20más%20información%20sobre%20tus%20servicios%20de%20marketing')">
+      <button class="btn"
+        onclick="window.open('https://wa.me/525551234567?text=Hola%20Carlos,%20quiero%20más%20información%20sobre%20tus%20servicios%20de%20marketing')">
         <ion-icon name="logo-whatsapp"></ion-icon>
         WhatsApp
       </button>
@@ -515,7 +648,8 @@
           <ion-icon name="search-outline" class="service-icon"></ion-icon>
           <div class="service-name">SEO Avanzado</div>
           <div class="service-detail">
-            <p>Optimización para motores de búsqueda, investigación de keywords y estrategias de posicionamiento orgánico.</p>
+            <p>Optimización para motores de búsqueda, investigación de keywords y estrategias de posicionamiento
+              orgánico.</p>
           </div>
         </div>
         <div class="service-card">
@@ -542,7 +676,7 @@
       </div>
     </div>
 
-    
+
 
     <div class="socials">
       <button class="btn-social">
@@ -593,8 +727,79 @@
     </div>
 
     <div class="credits">
-      © 2024 Carlos Rodríguez | 
-      <a href="https://mexicodigitalcards.com" target="_blank">Tarjeta Digital Premium por Ramón Salas</a>
+      <div class="credits-p">
+        <p>© 2025 Carlos Rodríguez |</p>
+        <button class="btn-credits" id="btnPrivacyNotice">Aviso de Privacidad</button>
+      </div>
+      <a href="https://mexicodigitalcards.com" target="_blank">Creado por:
+        <span class="credits-span">
+          México Digital Cards</a>
+      </span>
+    </div>
+  </div>
+
+  <!-- MODAL AVISO DE PRIVACIDAD -->
+  <div class="privacy-notice-modal" id="privacyNoticeModal">
+    <div class="privacy-modal-content">
+      <button class="privacy-modal-close" id="privacyModalClose">
+        <ion-icon name="close-outline"></ion-icon>
+      </button>
+
+      <h2 class="privacy-modal-title">Aviso de Privacidad</h2>
+
+      <div class="privacy-modal-text">
+        <h3>Carlos Rodríguez</h3>
+        <p><strong>Consultor de Marketing Digital</strong></p>
+
+        <p>En cumplimiento con la Ley Federal de Protección de Datos Personales en Posesión de los Particulares, hago de
+          su conocimiento lo siguiente:</p>
+
+        <h3>1. Identidad y Domicilio del Responsable</h3>
+        <p>Carlos Rodríguez, consultor independiente de marketing digital, es responsable del tratamiento de sus datos
+          personales. Contacto: carlos.rodriguez.marketing@ejemplo.com o al teléfono 555 987 6543.</p>
+
+        <h3>2. Finalidades del Tratamiento</h3>
+        <p>Los datos personales recabados serán utilizados para:</p>
+
+        <p><strong>Finalidades Primarias</strong></p>
+        <ul>
+          <li>Análisis de necesidades de marketing y elaboración de estrategias personalizadas.</li>
+          <li>Seguimiento y reporte de campañas publicitarias.</li>
+          <li>Facturación y cobranza de servicios profesionales.</li>
+        </ul>
+
+        <p><strong>Finalidades Secundarias</strong></p>
+        <p>Si usted está de acuerdo, sus datos también podrán ser utilizados para:</p>
+        <ul>
+          <li>Envío de casos de éxito y mejores prácticas de marketing</li>
+          <li>Invitaciones a webinars y eventos del sector</li>
+        </ul>
+        <p><em>Nota: Puede oponerse al tratamiento de sus datos personales para estas finalidades en cualquier
+            momento.</em></p>
+
+        <h3>3. Datos Personales Recabados</h3>
+        <p>Para cumplir con las finalidades anteriores, se recopilarán:</p>
+        <ul>
+          <li>Datos de contacto y información empresarial</li>
+          <li>Métricas y datos analíticos de sus plataformas digitales</li>
+          <li>Información presupuestaria para propuestas de servicios</li>
+        </ul>
+
+        <h3>4. Transferencia de Datos</h3>
+        <p>Sus datos podrán ser compartidos con plataformas de publicidad digital (Google Ads, Meta Business, etc.)
+          exclusivamente para la ejecución de campañas autorizadas.</p>
+
+        <h3>5. Medios para Ejercer Derechos ARCO</h3>
+        <p>Para ejercer sus derechos ARCO, envíe su solicitud a carlos.rodriguez.marketing@ejemplo.com con los datos
+          requeridos para su identificación.</p>
+
+        <p><em>Fecha de última actualización: 15 de Enero de 2025.</em></p>
+
+        <p>Declaro que he leído, comprendido y acepto el tratamiento de mis datos personales conforme a lo establecido
+          en este aviso de privacidad.</p>
+      </div>
+
+
     </div>
   </div>
 
@@ -649,7 +854,7 @@ END:VCARD`;
 
       const blob = new Blob([vcf], { type: "text/vcard;charset=utf-8" });
       const url = URL.createObjectURL(blob);
-      
+
       const link = document.createElement("a");
       link.href = url;
       link.download = "carlos-rodriguez-consultor.vcf";
@@ -657,6 +862,35 @@ END:VCARD`;
       link.click();
       document.body.removeChild(link);
       URL.revokeObjectURL(url);
+    });
+
+    // Funcionalidad para el modal de aviso de privacidad
+    const privacyModal = document.getElementById('privacyNoticeModal');
+    const btnPrivacyNotice = document.getElementById('btnPrivacyNotice');
+    const privacyModalClose = document.getElementById('privacyModalClose');
+
+    // Abrir modal
+    btnPrivacyNotice.addEventListener('click', function () {
+      privacyModal.style.display = 'flex';
+    });
+
+    // Cerrar modal
+    privacyModalClose.addEventListener('click', function () {
+      privacyModal.style.display = 'none';
+    });
+
+    // Cerrar modal al hacer clic fuera del contenido
+    privacyModal.addEventListener('click', function (e) {
+      if (e.target === privacyModal) {
+        privacyModal.style.display = 'none';
+      }
+    });
+
+    // Cerrar modal con tecla Escape
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && privacyModal.style.display === 'flex') {
+        privacyModal.style.display = 'none';
+      }
     });
 
     // // Función para generar QR (placeholder - en producción usarías una librería QR)
@@ -672,4 +906,5 @@ END:VCARD`;
     // });
   </script>
 </body>
+
 </html>
