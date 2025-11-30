@@ -11,8 +11,10 @@
   <style>
     :root {
       --primary-color: #ffffff;
-      --secondary-color: #00a859; /* Verde PREVISORA */
-      --accent-color: #1e3a8a; /* Azul PREVISORA */
+      --secondary-color: #00a859;
+      /* Verde PREVISORA */
+      --accent-color: #1e3a8a;
+      /* Azul PREVISORA */
       --text-color: #ffffff;
       --text-secondary: #cbd5e1;
       --radius: 20px;
@@ -448,10 +450,14 @@
       cursor: pointer;
     }
 
+    /* ESTILOS CORREGIDOS PARA EL MODAL DE SERVICIOS */
     .services-grid {
       display: grid;
       gap: 1rem;
       margin-top: 1rem;
+      max-height: 70vh;
+      overflow-y: auto;
+      padding-right: 0.5rem;
     }
 
     .service-modal-item {
@@ -471,6 +477,10 @@
       transform: translateY(-2px);
     }
 
+    .service-modal-item.active {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
     .service-header {
       display: flex;
       align-items: center;
@@ -488,19 +498,28 @@
       justify-content: center;
       color: white;
       font-size: 1.2rem;
+      flex-shrink: 0;
     }
 
     .service-modal-name {
       font-weight: 600;
       color: var(--text-color);
-      font-size: 1.1rem;
+      font-size: 1rem;
+      line-height: 1.3;
     }
 
+    /* Animación corregida para los detalles */
     .service-detail {
-      max-height: 100px;
-      opacity: 1;
+      max-height: 0;
+      opacity: 0;
       overflow: hidden;
       transition: all 0.3s ease;
+      margin-top: 0;
+    }
+
+    .service-modal-item.active .service-detail {
+      max-height: 200px;
+      opacity: 1;
       margin-top: 0.5rem;
     }
 
@@ -508,6 +527,26 @@
       font-size: 0.9rem;
       color: var(--text-secondary);
       line-height: 1.4;
+      margin: 0;
+    }
+
+    /* Scrollbar personalizado para el modal */
+    .services-grid::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .services-grid::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+    }
+
+    .services-grid::-webkit-scrollbar-thumb {
+      background: var(--secondary-color);
+      border-radius: 3px;
+    }
+
+    .services-grid::-webkit-scrollbar-thumb:hover {
+      background: #00c267;
     }
 
     /* NUEVO: Modal de Links */
@@ -722,7 +761,7 @@
     }
 
     .map {
-      border-radius: 10px; 
+      border-radius: 10px;
     }
 
     .credits {
@@ -999,11 +1038,14 @@
           <ion-icon name="location-outline"></ion-icon>
           Nuestra Ubicación
         </div>
-        <div class="map-placeholder" >
+        <div class="map-placeholder">
           <ion-icon name="map-outline" style="font-size: 2rem; margin-bottom: 0.5rem;"></ion-icon>
           <div>Ver en Google Maps</div>
           <div style="font-size: 0.8rem; margin-top: 0.3rem;">Juan Escutia #260 interior 8, Col. Niños Heroes</div>
-          <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3695.6780610415685!2d-100.97807272199535!3d22.1382471966975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842aa20f1d933f8b%3A0xd99c78076ea08cb5!2sJuan%20Escutia%20260%2C%20Ni%C3%B1os%20H%C3%A9roes%2C%20Ju%C3%A1rez%2C%2078340%20San%20Luis%20Potos%C3%AD%2C%20S.L.P.!5e0!3m2!1ses-419!2smx!4v1764527322206!5m2!1ses-419!2smx" width="250" height="250" style="border:0;" allowfullscreen="" loading="lazy"  referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <iframe class="map"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3695.6780610415685!2d-100.97807272199535!3d22.1382471966975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842aa20f1d933f8b%3A0xd99c78076ea08cb5!2sJuan%20Escutia%20260%2C%20Ni%C3%B1os%20H%C3%A9roes%2C%20Ju%C3%A1rez%2C%2078340%20San%20Luis%20Potos%C3%AD%2C%20S.L.P.!5e0!3m2!1ses-419!2smx!4v1764527322206!5m2!1ses-419!2smx"
+            width="250" height="250" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
 
@@ -1078,6 +1120,7 @@
     </div>
   </div>
 
+
   <div class="services-modal" id="servicesModal">
     <div class="modal-content">
       <button class="modal-close" onclick="closeServicesModal()">
@@ -1096,20 +1139,24 @@
             <div class="service-modal-name">PLAN DE EDUCACIÓN GARANTIZADA</div>
           </div>
           <div class="service-detail">
-            <p>Con este PROYECTO DE INVERSION PARA LA EDUCACIÓN, podrás ahorrar y generar rentabilidad para asegurar el futuro educativo de tus hijos.</p>
+            <p>Con este PROYECTO DE INVERSION PARA LA EDUCACIÓN, podrás ahorrar y generar rentabilidad para asegurar el
+              futuro educativo de tus hijos.</p>
           </div>
         </div>
+
         <div class="service-modal-item">
           <div class="service-header">
             <div class="service-modal-icon">
               <ion-icon name="person-outline"></ion-icon>
             </div>
-            <div class="service-modal-name">RETIRO Y JUBILACION</div>
+            <div class="service-modal-name">RETIRO Y JUBILACIÓN</div>
           </div>
           <div class="service-detail">
-            <p>No dejes tu futuro al azar. Con nuestro apoyo, podrás disfrutar de una vejez tranquila y sin preocupaciones financieras. ¡El momento de actuar es ahora!  .</p>
+            <p>No dejes tu futuro al azar. Con nuestro apoyo, podrás disfrutar de una vejez tranquila y sin
+              preocupaciones financieras. ¡El momento de actuar es ahora!</p>
           </div>
         </div>
+
         <div class="service-modal-item">
           <div class="service-header">
             <div class="service-modal-icon">
@@ -1118,9 +1165,11 @@
             <div class="service-modal-name">SAT DEVOLUCIÓN DE IMPUESTOS</div>
           </div>
           <div class="service-detail">
-            <p>Si destinas el 10% de tus ingresos a un Plan Personal de Retiro (PPR), puedes deducir el 100% de estas aportaciones de tus impuestos.</p>
+            <p>Si destinas el 10% de tus ingresos a un Plan Personal de Retiro (PPR), puedes deducir el 100% de estas
+              aportaciones de tus impuestos.</p>
           </div>
         </div>
+
         <div class="service-modal-item">
           <div class="service-header">
             <div class="service-modal-icon">
@@ -1129,9 +1178,11 @@
             <div class="service-modal-name">AHORRO PARA VIAJAR</div>
           </div>
           <div class="service-detail">
-            <p>Ahorrar para viajar es invertir en tus sueños y en tu felicidad. Si comienzas hoy, ese viaje soñado podría estar más cerca de lo que imaginas.</p>
+            <p>Ahorrar para viajar es invertir en tus sueños y en tu felicidad. Si comienzas hoy, ese viaje soñado
+              podría estar más cerca de lo que imaginas.</p>
           </div>
         </div>
+
         <div class="service-modal-item">
           <div class="service-header">
             <div class="service-modal-icon">
@@ -1140,9 +1191,11 @@
             <div class="service-modal-name">MODALIDAD 40. MEJORA TU PENSION</div>
           </div>
           <div class="service-detail">
-            <p>Si te interesa saber si aplicas para este esquema y cómo puedes optimizar tu pensión, ¡no dudes en contactarme o agendar una cita!</p>
+            <p>Si te interesa saber si aplicas para este esquema y cómo puedes optimizar tu pensión, ¡no dudes en
+              contactarme o agendar una cita!</p>
           </div>
         </div>
+
         <div class="service-modal-item">
           <div class="service-header">
             <div class="service-modal-icon">
@@ -1151,9 +1204,12 @@
             <div class="service-modal-name">HERENCIA, SUCESIÓN, LEGADO</div>
           </div>
           <div class="service-detail">
-            <p>Tener una herencia, dejar un legado o asegurar recursos para una sucesión es fundamental por varias razones que impactan tanto en el presente como en el futuro de tus seres queridos y de tu propia tranquilidad.</p>
+            <p>Tener una herencia, dejar un legado o asegurar recursos para una sucesión es fundamental por varias
+              razones que impactan tanto en el presente como en el futuro de tus seres queridos y de tu propia
+              tranquilidad.</p>
           </div>
         </div>
+
         <div class="service-modal-item">
           <div class="service-header">
             <div class="service-modal-icon">
@@ -1162,9 +1218,11 @@
             <div class="service-modal-name">APERTURA O LIQUIDEZ PARA NEGOCIO</div>
           </div>
           <div class="service-detail">
-            <p> En lugar de pagar intereses a un banco, ¿por qué no utilizar tus propios ahorros y convertirte en tu propio prestamista?</p>
+            <p>En lugar de pagar intereses a un banco, ¿por qué no utilizar tus propios ahorros y convertirte en tu
+              propio prestamista?</p>
           </div>
         </div>
+
         <div class="service-modal-item">
           <div class="service-header">
             <div class="service-modal-icon">
@@ -1173,9 +1231,11 @@
             <div class="service-modal-name">PLANES DE INVERSIÓN NO BANCARIOS</div>
           </div>
           <div class="service-detail">
-            <p>Imagina poder alcanzar tus metas financieras, como comprar una casa, financiar la educación de tus hijos o asegurar un retiro tranquilo.</p>
+            <p>Imagina poder alcanzar tus metas financieras, como comprar una casa, financiar la educación de tus hijos
+              o asegurar un retiro tranquilo.</p>
           </div>
         </div>
+
         <div class="service-modal-item">
           <div class="service-header">
             <div class="service-modal-icon">
@@ -1184,12 +1244,15 @@
             <div class="service-modal-name">ADQUISICIÓN DE BIENES</div>
           </div>
           <div class="service-detail">
-            <p>En lugar de endeudarse, las personas pueden invertir en planes de mediano y largo plazo para adquirir bienes patrimoniales sin depender de un crédito.</p>
+            <p>En lugar de endeudarse, las personas pueden invertir en planes de mediano y largo plazo para adquirir
+              bienes patrimoniales sin depender de un crédito.</p>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+
 
   <div class="links-modal" id="linksModal">
     <div class="modal-content">
@@ -1201,18 +1264,21 @@
         Enlaces de Interés
       </div>
       <div class="links-grid">
-        <a href="http://www.consar.gob.mx/gobmx/Aplicativo/calculadora/imss/CalculadoraIMSS.aspx" class="link-item" target="_blank">
+        <a href="http://www.consar.gob.mx/gobmx/Aplicativo/calculadora/imss/CalculadoraIMSS.aspx" class="link-item"
+          target="_blank">
           <ion-icon name="calculator-outline" class="link-icon"></ion-icon>
           <div class="link-info">
             <div class="link-title">Calcula tu Pensión IMSS</div>
             <div class="link-url">Te permite estimar cuál podria ser tu pensión al finalizar tu vida laboral.</div>
           </div>
         </a>
-        <a href="http://www.consar.gob.mx/gobmx/Aplicativo/calculadora/issste/CalculadoraISSSTE.aspx" class="link-item" target="_blank">
+        <a href="http://www.consar.gob.mx/gobmx/Aplicativo/calculadora/issste/CalculadoraISSSTE.aspx" class="link-item"
+          target="_blank">
           <ion-icon name="calculator-outline" class="link-icon"></ion-icon>
           <div class="link-info">
             <div class="link-title">Calcula tu Pensión ISSSTE</div>
-            <div class="link-url">Para realizar un cálculo estimado de la pensión que te correspondería al momento de tu retiro.</div>
+            <div class="link-url">Para realizar un cálculo estimado de la pensión que te correspondería al momento de tu
+              retiro.</div>
           </div>
         </a>
         <a href="https://oficinavirtual.issste.gob.mx/" class="link-item" target="_blank">
@@ -1226,21 +1292,26 @@
           <ion-icon name="calculator-outline" class="link-icon"></ion-icon>
           <div class="link-info">
             <div class="link-title">Semanas Cotizadas IMSS</div>
-            <div class="link-url">Documento informativo que te permite conocer el número de semanas que tienes cotizadas ante el Instituto Mexicano del Seguro Social (IMSS).</div>
+            <div class="link-url">Documento informativo que te permite conocer el número de semanas que tienes cotizadas
+              ante el Instituto Mexicano del Seguro Social (IMSS).</div>
           </div>
         </a>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdEEn5vtWY5Jo3BCyXQoPRqmdlQu4dhdJdhofbUjIdS8MdANA/viewform" class="link-item" target="_blank">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdEEn5vtWY5Jo3BCyXQoPRqmdlQu4dhdJdhofbUjIdS8MdANA/viewform"
+          class="link-item" target="_blank">
           <ion-icon name="newspaper-outline" class="link-icon"></ion-icon>
           <div class="link-info">
             <div class="link-title">Solicitud crea Futuro</div>
-            <div class="link-url">El objetivo del siguiente formulario es recabar la información necesaria para el llenado de la solicitud digital.</div>
+            <div class="link-url">El objetivo del siguiente formulario es recabar la información necesaria para el
+              llenado de la solicitud digital.</div>
           </div>
         </a>
         <a href="https://www.imss.gob.mx/personas-trabajadoras-independientes" class="link-item" target="_blank">
           <ion-icon name="newspaper-outline" class="link-icon"></ion-icon>
           <div class="link-info">
             <div class="link-title">Modalidad 10</div>
-            <div class="link-url">En beneficio de trabajadores Independientes, el IMSS ha dispuesto un esquema integral de Seguridad Social simplificado para la incorporación voluntaria al Régimen Obligatorio de este sector de la población. </div>
+            <div class="link-url">En beneficio de trabajadores Independientes, el IMSS ha dispuesto un esquema integral
+              de Seguridad Social simplificado para la incorporación voluntaria al Régimen Obligatorio de este sector de
+              la población. </div>
           </div>
         </a>
       </div>
@@ -1259,68 +1330,91 @@
       <div class="privacy-modal-text">
         <h3>Juan Gerardo Miranda Victorino</h3>
         <p><strong>PREVISORA Soluciones Financieras</strong></p>
-        
-        <p>En cumplimiento con la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (en adelante, la "Ley"), hago de su conocimiento lo siguiente:</p>
-        
+
+        <p>En cumplimiento con la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (en
+          adelante, la "Ley"), hago de su conocimiento lo siguiente:</p>
+
         <h3>1. Identidad y Domicilio del Responsable</h3>
-        <p>Juan Gerardo Miranda Victorino, RFC MIVJ741215587, Persona Física, Agente de Seguros autorizado por la COMISIÓN NACIONAL DE SEGUROS Y FIANZAS, con cédula definitiva Y373621, es responsable del tratamiento de sus datos personales. Para efectos de contacto, puede dirigirse al correo electrónico juangerardomiranda@gmail.com o al teléfono 444 558 3022.</p>
-        
+        <p>Juan Gerardo Miranda Victorino, RFC MIVJ741215587, Persona Física, Agente de Seguros autorizado por la
+          COMISIÓN NACIONAL DE SEGUROS Y FIANZAS, con cédula definitiva Y373621, es responsable del tratamiento de sus
+          datos personales. Para efectos de contacto, puede dirigirse al correo electrónico juangerardomiranda@gmail.com
+          o al teléfono 444 558 3022.</p>
+
         <h3>2. Finalidades del Tratamiento</h3>
         <p>Los datos personales recabados serán utilizados para las siguientes finalidades:</p>
-        
+
         <p><strong>Finalidades Primarias</strong></p>
         <ul>
-          <li>Proveer servicios financieros, aseguradores y de fianzas, incluyendo el análisis de riesgos y emisión de pólizas.</li>
+          <li>Proveer servicios financieros, aseguradores y de fianzas, incluyendo el análisis de riesgos y emisión de
+            pólizas.</li>
           <li>Enviar información y comunicaciones comerciales relacionadas con los productos y servicios ofrecidos.</li>
           <li>Cumplir con obligaciones legales relacionadas con los servicios proporcionados.</li>
-          <li>Recopilar datos sensibles relacionados con estado de salud, antecedentes hereditarios, datos biométricos, exclusivamente para fines de análisis de riesgos, emisión de seguros médicos o de vida, y otros productos relacionados con la salud, en su caso.</li>
+          <li>Recopilar datos sensibles relacionados con estado de salud, antecedentes hereditarios, datos biométricos,
+            exclusivamente para fines de análisis de riesgos, emisión de seguros médicos o de vida, y otros productos
+            relacionados con la salud, en su caso.</li>
         </ul>
-        
+
         <p><strong>Finalidades Secundarias</strong></p>
-        <p>Si usted está de acuerdo, sus datos también podrán ser utilizados para las siguientes finalidades secundarias:</p>
+        <p>Si usted está de acuerdo, sus datos también podrán ser utilizados para las siguientes finalidades
+          secundarias:</p>
         <ul>
           <li>Realizar encuestas de satisfacción</li>
           <li>Ofrecer productos y servicios adicionales que podrían ser de su interés</li>
         </ul>
-        <p><em>Nota: Puede oponerse al tratamiento de sus datos personales para estas finalidades en cualquier momento.</em></p>
-        
+        <p><em>Nota: Puede oponerse al tratamiento de sus datos personales para estas finalidades en cualquier
+            momento.</em></p>
+
         <h3>3. Datos Personales Recabados</h3>
-        <p>Para cumplir con las finalidades anteriores, se recopilarán los siguientes datos personales según la necesidad del trámite solicitado:</p>
+        <p>Para cumplir con las finalidades anteriores, se recopilarán los siguientes datos personales según la
+          necesidad del trámite solicitado:</p>
         <ul>
-          <li>Datos de identificación: Nombre, teléfono, correo electrónico, Identificación oficial vigente (INE, pasaporte, cédula profesional, licencia de conducir).</li>
+          <li>Datos de identificación: Nombre, teléfono, correo electrónico, Identificación oficial vigente (INE,
+            pasaporte, cédula profesional, licencia de conducir).</li>
           <li>Datos financieros: Ingresos, historial laboral, premios, bonos, datos fiscales.</li>
           <li>Documentación oficial: Documentos emitidos por IMSS e ISSSTE para verificar historial de cotización.</li>
           <li>Comprobante de domicilio (ej. recibo de luz, agua, etc.).</li>
-          <li>Estado de cuenta bancario (carátula). * Será necesario solo tener presente los siguientes datos: Logo de la institución bancaria, datos del titular de la cuenta, fecha del documento, número de cuenta, número de tarjeta, vencimiento y CLABE interbancaria. Los movimientos como abonos, cargos o disposiciones no es necesario incluirlos (pueden ser omitidos)</li>
+          <li>Estado de cuenta bancario (carátula). * Será necesario solo tener presente los siguientes datos: Logo de
+            la institución bancaria, datos del titular de la cuenta, fecha del documento, número de cuenta, número de
+            tarjeta, vencimiento y CLABE interbancaria. Los movimientos como abonos, cargos o disposiciones no es
+            necesario incluirlos (pueden ser omitidos)</li>
           <li>CURP.</li>
         </ul>
-        
+
         <h3>4. Transferencia de Datos</h3>
-        <p>Sus datos personales podrán ser transferidos a terceros únicamente para las finalidades descritas. Estos terceros incluyen:</p>
+        <p>Sus datos personales podrán ser transferidos a terceros únicamente para las finalidades descritas. Estos
+          terceros incluyen:</p>
         <ul>
           <li>Aseguradoras y afianzadoras para la emisión y administración de pólizas.</li>
           <li>Bróker, promotoras y proveedores de servicios financieros relacionados.</li>
           <li>Personal administrativo o asistentes autorizados por el Responsable</li>
         </ul>
         <p>Estas transferencias se realizarán bajo estrictas medidas de confidencialidad y seguridad.</p>
-        
+
         <h3>5. Medios para Ejercer Derechos ARCO</h3>
-        <p>Usted tiene derecho a acceder, rectificar, cancelar u oponerse (ARCO) al tratamiento de sus datos personales. Para ejercer estos derechos, puede enviar una solicitud al correo electrónico juangerardomiranda@gmail.com. Su solicitud deberá incluir:</p>
+        <p>Usted tiene derecho a acceder, rectificar, cancelar u oponerse (ARCO) al tratamiento de sus datos personales.
+          Para ejercer estos derechos, puede enviar una solicitud al correo electrónico juangerardomiranda@gmail.com. Su
+          solicitud deberá incluir:</p>
         <ul>
           <li>Nombre completo y medio de contacto para recibir la respuesta.</li>
           <li>Documentos que acrediten su identidad o la representación legal.</li>
           <li>Descripción clara del derecho que desea ejercer.</li>
         </ul>
-        
+
         <h3>6. Medidas de Seguridad</h3>
-        <p>El Responsable implementa medidas de seguridad administrativas y tecnológicas para proteger sus datos personales, tales como el uso de contraseñas, cifrado de información y restricciones de acceso físico y digital. Además, los datos recopilados se almacenan en una plataforma segura proporcionada por Google Drive, con acceso limitado y controlado.</p>
-        
+        <p>El Responsable implementa medidas de seguridad administrativas y tecnológicas para proteger sus datos
+          personales, tales como el uso de contraseñas, cifrado de información y restricciones de acceso físico y
+          digital. Además, los datos recopilados se almacenan en una plataforma segura proporcionada por Google Drive,
+          con acceso limitado y controlado.</p>
+
         <h3>7. Cambios al Aviso de Privacidad</h3>
-        <p>Este Aviso de Privacidad puede ser modificado en cualquier momento. Las actualizaciones se comunicarán mediante los medios de contacto proporcionados. La versión más reciente siempre podrá ser solicitada directamente al correo electrónico juangerardomiranda@gmail.com</p>
-        
+        <p>Este Aviso de Privacidad puede ser modificado en cualquier momento. Las actualizaciones se comunicarán
+          mediante los medios de contacto proporcionados. La versión más reciente siempre podrá ser solicitada
+          directamente al correo electrónico juangerardomiranda@gmail.com</p>
+
         <p><em>Fecha de última actualización: 15 de Enero de 2025.</em></p>
-        
-        <p>Declaro que he leído, comprendido y acepto el tratamiento de mis datos personales conforme a lo establecido en este aviso de privacidad.</p>
+
+        <p>Declaro que he leído, comprendido y acepto el tratamiento de mis datos personales conforme a lo establecido
+          en este aviso de privacidad.</p>
       </div>
 
 
@@ -1438,11 +1532,11 @@
     document.getElementById("btnAgendar").addEventListener("click", () => {
       const subject = "Solicitud de Cita - PREVISORA";
       const body = "Hola, me interesa agendar una cita para conocer más sobre sus servicios financieros.\n\nNombre:\nTeléfono:\nServicio de interés:\nFecha preferida:";
-      
+
       window.open(`mailto:jerryfinanciero@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`, '_blank');
     });
 
-    
+
 
     // Analytics real
     let visitCount = localStorage.getItem('previsoraVisitCount') || 0;
@@ -1452,11 +1546,11 @@
     function actualizarAnalytics() {
       const now = new Date();
       const currentMonth = now.getMonth() + '-' + now.getFullYear();
-      
+
       // Incrementar contador total
       visitCount++;
       localStorage.setItem('previsoraVisitCount', visitCount);
-      
+
       // Verificar si es una nueva visita del mes
       if (!lastVisitDate || lastVisitDate !== currentMonth) {
         monthlyVisitCount = 1;
@@ -1466,14 +1560,14 @@
         monthlyVisitCount++;
         localStorage.setItem('previsoraMonthlyVisitCount', monthlyVisitCount);
       }
-      
+
       // Actualizar la UI
       document.getElementById('totalVisits').textContent = visitCount.toLocaleString();
       document.getElementById('monthlyVisits').textContent = monthlyVisitCount;
     }
 
     // Llamar la función cuando se carga la página
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       actualizarAnalytics();
     });
 
@@ -1532,6 +1626,41 @@ END:VCARD`;
         privacyModal.style.display = 'none';
       }
     });
+
+    // Funciones para el modal de servicios con animación
+    function openServicesModal() {
+      document.getElementById('servicesModal').classList.add('active');
+      // Resetear todos los servicios al abrir el modal
+      const serviceItems = document.querySelectorAll('.service-modal-item');
+      serviceItems.forEach(item => {
+        item.classList.remove('active');
+      });
+    }
+
+    function closeServicesModal() {
+      document.getElementById('servicesModal').classList.remove('active');
+    }
+
+    // Manejar clic en servicios para expandir/contraer
+    document.addEventListener('DOMContentLoaded', function () {
+      const serviceItems = document.querySelectorAll('.service-modal-item');
+
+      serviceItems.forEach(item => {
+        item.addEventListener('click', function () {
+          // Cerrar todos los demás servicios
+          serviceItems.forEach(otherItem => {
+            if (otherItem !== item) {
+              otherItem.classList.remove('active');
+            }
+          });
+
+          // Alternar el servicio actual
+          this.classList.toggle('active');
+        });
+      });
+    });
+
+
   </script>
 </body>
 
