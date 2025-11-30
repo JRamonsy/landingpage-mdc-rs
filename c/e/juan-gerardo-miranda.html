@@ -4,13 +4,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Tarjeta digital empresarial - Innovate Solutions" />
+  <meta name="description" content="Tarjeta digital empresarial - PREVISORA Soluciones Financieras" />
+  <link rel="icon" href="../../assets/imgs/c/p/logo-previsora.png" type="image/x-icon">
   <title>PREVISORA - Soluciones Financieras</title>
 
   <style>
     :root {
       --primary-color: #ffffff;
-      --secondary-color: #00d4ff;
+      --secondary-color: #00a859; /* Verde PREVISORA */
+      --accent-color: #1e3a8a; /* Azul PREVISORA */
       --text-color: #ffffff;
       --text-secondary: #cbd5e1;
       --radius: 20px;
@@ -36,9 +38,9 @@
 
     .card {
       background:
-        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
-        linear-gradient(135deg, #1e3a8a 0%, #3730a3 50%, #5b21b6 100%);
+        radial-gradient(circle at 20% 80%, rgba(0, 168, 89, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(30, 58, 138, 0.3) 0%, transparent 50%),
+        linear-gradient(135deg, #0f2d5c 0%, #1e3a8a 50%, #00a859 100%);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       max-width: 420px;
@@ -124,7 +126,7 @@
     }
 
     .member-modal-content {
-      background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%);
+      background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
       border-radius: var(--radius);
       padding: 2rem;
       max-width: 350px;
@@ -336,7 +338,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(120, 119, 198, 0.05));
+      background: linear-gradient(135deg, rgba(0, 168, 89, 0.1), rgba(30, 58, 138, 0.05));
       border-radius: 12px;
       z-index: -1;
     }
@@ -366,11 +368,11 @@
       align-items: center;
       justify-content: center;
       font-weight: bold;
-      color: #1e3a8a;
+      color: var(--accent-color);
       font-size: 0.9rem;
       padding: 5px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-      border: 2px solid rgba(0, 212, 255, 0.3);
+      border: 2px solid rgba(0, 168, 89, 0.3);
       position: relative;
     }
 
@@ -381,7 +383,7 @@
       left: -2px;
       right: -2px;
       bottom: -2px;
-      background: linear-gradient(45deg, transparent, rgba(0, 212, 255, 0.2), transparent);
+      background: linear-gradient(45deg, transparent, rgba(0, 168, 89, 0.2), transparent);
       border-radius: 14px;
       z-index: -1;
     }
@@ -424,12 +426,11 @@
 
     .modal-content,
     .member-modal-content {
-      background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%);
+      background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
       border-radius: var(--radius);
       padding: 2rem;
       max-width: 350px;
       width: 90%;
-
     }
 
     .member-modal-content {
@@ -470,11 +471,6 @@
       transform: translateY(-2px);
     }
 
-    .service-modal-item:hover .service-detail {
-      max-height: 100px;
-      opacity: 1;
-    }
-
     .service-header {
       display: flex;
       align-items: center;
@@ -501,8 +497,8 @@
     }
 
     .service-detail {
-      max-height: 0;
-      opacity: 0;
+      max-height: 100px;
+      opacity: 1;
       overflow: hidden;
       transition: all 0.3s ease;
       margin-top: 0.5rem;
@@ -650,13 +646,13 @@
 
     .action-btn.primary {
       background: var(--secondary-color);
-      color: #1e3a8a;
+      color: white;
       font-weight: 600;
     }
 
     .action-btn.secondary {
       background: rgba(255, 255, 255, 0.9);
-      color: #1e3a8a;
+      color: var(--accent-color);
       border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
@@ -761,18 +757,19 @@
     }
 
     .credits a {
-      color: var(--secondary-color);
+      color: var(--text-secondary);
       text-decoration: none;
       font-weight: 500;
       padding: 1rem 0;
     }
 
-    .credits a:hover {
-      color: #e0e7ff;
-    }
-
     .credits-span {
       text-decoration: underline;
+      color: var(--text-secondary);
+    }
+
+    .credits-span:hover {
+      color: #e0e7ff;
     }
 
     .btn-inicio-flotante {
@@ -780,7 +777,7 @@
       bottom: 20px;
       right: 20px;
       background: rgba(255, 255, 255, 0.9);
-      color: #1e3a8a;
+      color: var(--accent-color);
       border: none;
       border-radius: 50px;
       padding: 12px 20px;
@@ -840,7 +837,7 @@
       background: none;
       border: none;
       font-size: 1.5rem;
-      color: #667eea;
+      color: var(--secondary-color);
       cursor: pointer;
       width: 40px;
       height: 40px;
@@ -852,11 +849,11 @@
     }
 
     .privacy-modal-close:hover {
-      background: rgba(102, 126, 234, 0.1);
+      background: rgba(0, 168, 89, 0.1);
     }
 
     .privacy-modal-title {
-      color: #667eea;
+      color: var(--secondary-color);
       font-size: 1.5rem;
       margin-bottom: 1.5rem;
       text-align: center;
@@ -870,7 +867,7 @@
     }
 
     .privacy-modal-text h3 {
-      color: #667eea;
+      color: var(--secondary-color);
       margin: 1.5rem 0 0.5rem 0;
       font-size: 1rem;
       text-transform: uppercase;
@@ -925,7 +922,7 @@
 <body>
   <div class="card">
     <div class="header">
-      <img src="../../assets/imgs/c/p/logo-previsora.png" alt="Innovate Solutions" class="logo" />
+      <img src="../../assets/imgs/c/p/logo-previsora.png" alt="PREVISORA" class="logo" />
       <div class="company-name">PREVISORA </div>
       <div class="company-tagline">Soluciones Financieras</div>
     </div>
@@ -993,11 +990,6 @@
             <div class="contact-label">WhatsApp</div>
             <div class="contact-value">Enviar mensaje</div>
           </div>
-          <div class="contact-card" onclick="window.open('https://innovatesolutions.com')">
-            <ion-icon name="globe-outline"></ion-icon>
-            <div class="contact-label">Sitio Web</div>
-            <div class="contact-value">innovatesolutions.com</div>
-          </div>
         </div>
       </div>
 
@@ -1048,10 +1040,10 @@
 
     <div class="credits">
       <div class="credits-p">
-        <p>© 2025 Innovate Solutions |</p>
+        <p>© 2025 PREVISORA |</p>
         <button class="btn-credits" id="btnPrivacyNotice">Aviso de Privacidad</button>
       </div>
-      <a href="https://mexicodigitalcards.com" target="_blank">Creado por:
+      <a class="credits-a" href="https://mexicodigitalcards.com" target="_blank">Creado por:
         <span class="credits-span">
           México Digital Cards</a>
       </span>
@@ -1099,7 +1091,7 @@
         <div class="service-modal-item">
           <div class="service-header">
             <div class="service-modal-icon">
-              <ion-icon name="code-slash-outline"></ion-icon>
+              <ion-icon name="school-outline"></ion-icon>
             </div>
             <div class="service-modal-name">PLAN DE EDUCACIÓN GARANTIZADA</div>
           </div>
@@ -1110,7 +1102,7 @@
         <div class="service-modal-item">
           <div class="service-header">
             <div class="service-modal-icon">
-              <ion-icon name="bar-chart-outline"></ion-icon>
+              <ion-icon name="person-outline"></ion-icon>
             </div>
             <div class="service-modal-name">RETIRO Y JUBILACION</div>
           </div>
@@ -1121,7 +1113,7 @@
         <div class="service-modal-item">
           <div class="service-header">
             <div class="service-modal-icon">
-              <ion-icon name="bar-chart-outline"></ion-icon>
+              <ion-icon name="cash-outline"></ion-icon>
             </div>
             <div class="service-modal-name">SAT DEVOLUCIÓN DE IMPUESTOS</div>
           </div>
@@ -1132,7 +1124,7 @@
         <div class="service-modal-item">
           <div class="service-header">
             <div class="service-modal-icon">
-              <ion-icon name="bar-chart-outline"></ion-icon>
+              <ion-icon name="airplane-outline"></ion-icon>
             </div>
             <div class="service-modal-name">AHORRO PARA VIAJAR</div>
           </div>
@@ -1143,7 +1135,7 @@
         <div class="service-modal-item">
           <div class="service-header">
             <div class="service-modal-icon">
-              <ion-icon name="bar-chart-outline"></ion-icon>
+              <ion-icon name="trending-up-outline"></ion-icon>
             </div>
             <div class="service-modal-name">MODALIDAD 40. MEJORA TU PENSION</div>
           </div>
@@ -1154,7 +1146,7 @@
         <div class="service-modal-item">
           <div class="service-header">
             <div class="service-modal-icon">
-              <ion-icon name="bar-chart-outline"></ion-icon>
+              <ion-icon name="business-outline"></ion-icon>
             </div>
             <div class="service-modal-name">HERENCIA, SUCESIÓN, LEGADO</div>
           </div>
@@ -1165,7 +1157,7 @@
         <div class="service-modal-item">
           <div class="service-header">
             <div class="service-modal-icon">
-              <ion-icon name="bar-chart-outline"></ion-icon>
+              <ion-icon name="storefront-outline"></ion-icon>
             </div>
             <div class="service-modal-name">APERTURA O LIQUIDEZ PARA NEGOCIO</div>
           </div>
@@ -1187,7 +1179,7 @@
         <div class="service-modal-item">
           <div class="service-header">
             <div class="service-modal-icon">
-              <ion-icon name="bar-chart-outline"></ion-icon>
+              <ion-icon name="home-outline"></ion-icon>
             </div>
             <div class="service-modal-name">ADQUISICIÓN DE BIENES</div>
           </div>
@@ -1357,14 +1349,6 @@
         description: 'Más de 10 años de experiencia en consultoría tecnológica y transformación digital. Especialista en estrategias de crecimiento y liderazgo de equipos multidisciplinarios.',
         whatsapp: '+524445583022',
         email: 'jerryfinanciero@gmail.com'
-      },
-      'roberto': {
-        name: 'Roberto Sánchez',
-        role: 'CTO',
-        photo: '../assets/imgs/profile2-empresarial-card.png',
-        description: 'Experto en arquitectura de software y desarrollo de soluciones escalables. Líder técnico con amplia experiencia en tecnologías cloud y DevOps.',
-        whatsapp: '+525551234568',
-        email: 'roberto@innovatesolutions.com'
       }
     };
 
@@ -1436,8 +1420,8 @@
       if (navigator.share) {
         try {
           await navigator.share({
-            title: "Innovate Solutions - Consultoría Tecnológica",
-            text: "Te comparto la tarjeta digital de Innovate Solutions, especialistas en desarrollo de software y consultoría TI",
+            title: "PREVISORA - Soluciones Financieras",
+            text: "Te comparto la tarjeta digital de PREVISORA, especialistas en soluciones financieras",
             url: urlTarjeta
           });
         } catch (error) {
@@ -1450,32 +1434,60 @@
       }
     });
 
+    // Agenda Cita
     document.getElementById("btnAgendar").addEventListener("click", () => {
-      window.open('https://calendly.com/innovatesolutions/consulta', '_blank');
+      const subject = "Solicitud de Cita - PREVISORA";
+      const body = "Hola, me interesa agendar una cita para conocer más sobre sus servicios financieros.\n\nNombre:\nTeléfono:\nServicio de interés:\nFecha preferida:";
+      
+      window.open(`mailto:jerryfinanciero@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`, '_blank');
     });
 
-    // Simular analytics
+    
+
+    // Analytics real
+    let visitCount = localStorage.getItem('previsoraVisitCount') || 0;
+    let monthlyVisitCount = localStorage.getItem('previsoraMonthlyVisitCount') || 0;
+    let lastVisitDate = localStorage.getItem('previsoraLastVisitDate');
+
     function actualizarAnalytics() {
-      const total = Math.floor(Math.random() * 500) + 1000;
-      const mensual = Math.floor(Math.random() * 50) + 50;
-      document.getElementById('totalVisits').textContent = total.toLocaleString();
-      document.getElementById('monthlyVisits').textContent = mensual;
+      const now = new Date();
+      const currentMonth = now.getMonth() + '-' + now.getFullYear();
+      
+      // Incrementar contador total
+      visitCount++;
+      localStorage.setItem('previsoraVisitCount', visitCount);
+      
+      // Verificar si es una nueva visita del mes
+      if (!lastVisitDate || lastVisitDate !== currentMonth) {
+        monthlyVisitCount = 1;
+        localStorage.setItem('previsoraMonthlyVisitCount', monthlyVisitCount);
+        localStorage.setItem('previsoraLastVisitDate', currentMonth);
+      } else {
+        monthlyVisitCount++;
+        localStorage.setItem('previsoraMonthlyVisitCount', monthlyVisitCount);
+      }
+      
+      // Actualizar la UI
+      document.getElementById('totalVisits').textContent = visitCount.toLocaleString();
+      document.getElementById('monthlyVisits').textContent = monthlyVisitCount;
     }
 
-    actualizarAnalytics();
-    setInterval(actualizarAnalytics, 30000);
+    // Llamar la función cuando se carga la página
+    document.addEventListener('DOMContentLoaded', function() {
+      actualizarAnalytics();
+    });
 
     // Función para guardar contacto empresarial
     function guardarContactoEmpresarial() {
       const vcf = `BEGIN:VCARD
 VERSION:3.0
-FN:Innovate Solutions
-ORG:Innovate Solutions
-TEL;TYPE=WORK,pref,voice:+525551234567
-EMAIL;TYPE=WORK:info@innovatesolutions.com
-URL:https://innovatesolutions.com
-ADR;TYPE=WORK:;;Av. Reforma 123;Ciudad de México;CDMX;06600;México
-NOTE:Consultoría Tecnológica y Desarrollo de Software
+FN:PREVISORA Soluciones Financieras
+ORG:PREVISORA Soluciones Financieras
+TEL;TYPE=WORK,pref,voice:+524445583022
+EMAIL;TYPE=WORK:jerryfinanciero@gmail.com
+URL:https://previsora.com
+ADR;TYPE=WORK:;;Juan Escutia #260 interior 8;Col. Niños Heroes;San Luis Potosí;78340;México
+NOTE:Soluciones Financieras y Asesoría en Previsión
 END:VCARD`;
 
       const blob = new Blob([vcf], { type: "text/vcard;charset=utf-8" });
@@ -1483,7 +1495,7 @@ END:VCARD`;
 
       const link = document.createElement("a");
       link.href = url;
-      link.download = "innovate-solutions.vcf";
+      link.download = "previsora-soluciones-financieras.vcf";
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
