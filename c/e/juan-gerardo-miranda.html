@@ -19,6 +19,8 @@
       --text-secondary: #cbd5e1;
       --radius: 20px;
       --shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      --name: rgb(47, 47, 163);
+
     }
 
     * {
@@ -53,7 +55,8 @@
     }
 
     .header {
-      background: rgba(0, 0, 0, 0.3);
+      /* background: rgba(0, 0, 0, 0.3); */
+      background: linear-gradient(180deg, #ffffff 0%, #d5e3f4 100%);
       backdrop-filter: blur(10px);
       padding: 2rem 1.5rem 1rem;
       text-align: center;
@@ -67,8 +70,9 @@
       border-radius: 50%;
       object-fit: cover;
       margin-bottom: 1rem;
-      border: 3px solid rgba(255, 255, 255, 0.3);
-      background: white;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      /* background: white; */
+      background: #0f172a;
       padding: 5px;
     }
 
@@ -76,14 +80,16 @@
       font-size: 1.6rem;
       font-weight: 700;
       margin-bottom: 0.5rem;
-      color: var(--text-color);
+      /* color: var(--text-color); */
+      color: var(--name);
     }
 
     .company-tagline {
       font-size: 1rem;
       opacity: 0.9;
       margin-bottom: 1rem;
-      color: var(--text-secondary);
+      /* color: var(--text-secondary); */
+      color: var(--name);
     }
 
     .content {
@@ -256,6 +262,10 @@
     .member-role {
       font-size: 0.8rem;
       color: var(--text-secondary);
+    }
+
+    #modalMemberDescription {
+      white-space: pre-line;
     }
 
     /* NUEVO: Botones de Servicios y Links en columnas - CORREGIDO */
@@ -434,9 +444,14 @@
       max-width: 350px;
       width: 90%;
     }
+    
 
     .member-modal-content {
-      text-align: center;
+      display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+  border-radius: 16px;
+  overflow: hidden;
     }
 
     .modal-close {
@@ -449,6 +464,28 @@
       font-size: 1.5rem;
       cursor: pointer;
     }
+
+    /* HEADER fijo */
+.member-modal-header {
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+/* BODY con scroll */
+.member-modal-description {
+  padding: 1rem;
+  overflow-y: auto;
+  flex: 1;
+  line-height: 1.6;
+}
+
+/* FOOTER fijo */
+.member-contact-buttons {
+  padding: 1rem;
+  border-top: 1px solid #eee;
+  display: flex;
+  gap: .75rem;
+}
 
     /* ESTILOS CORREGIDOS PARA EL MODAL DE SERVICIOS */
     .services-grid {
@@ -956,14 +993,17 @@
 
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+
 </head>
 
 <body>
   <div class="card">
     <div class="header">
-      <img src="../../assets/imgs/c/p/logo-previsora.png" alt="PREVISORA" class="logo" />
-      <div class="company-name">PREVISORA </div>
-      <div class="company-tagline">Soluciones Financieras</div>
+      <img src="../../assets/imgs/c/p/logo-juan-gerardo.jpg" alt="PREVISORA" class="logo" />
+      <div class="company-name">Juan Gerardo Miranda 
+</div>
+      <div class="company-tagline">Consultor Pensiones y Proyectos para el Retiro</div>
     </div>
 
     <div class="content">
@@ -973,7 +1013,7 @@
           Nuestro Equipo
         </div>
         <div class="team-grid">
-          <div class="team-member" onclick="openTeamMemberModal('maria')">
+          <div class="team-member" onclick="openTeamMemberModal('juan')">
             <img src="../../assets/imgs/c/p/profile-1-previsora.png" alt="María González" class="member-photo" />
             <div class="member-name">MBA. Juan Gerardo Miranda</div>
             <div class="member-role">Consultor en Previsión Financiera</div>
@@ -1095,30 +1135,50 @@
 
   <!-- MODALES (ocultos por defecto) -->
   <div class="team-member-modal" id="teamMemberModal">
-    <div class="member-modal-content">
+  <div class="member-modal-content">
+
+    <!-- HEADER -->
+    <header class="member-modal-header">
       <button class="modal-close" onclick="closeTeamMemberModal()">
         <ion-icon name="close-outline"></ion-icon>
       </button>
-      <div class="member-modal-header">
-        <img id="modalMemberPhoto" src="" alt="" class="member-modal-photo" />
-        <div class="member-modal-info">
-          <div id="modalMemberName" class="member-modal-name"></div>
-          <div id="modalMemberRole" class="member-modal-role"></div>
-        </div>
+
+      <img id="modalMemberPhoto"
+           src=""
+           alt=""
+           class="member-modal-photo" />
+
+      <div class="member-modal-info">
+        <div id="modalMemberName" class="member-modal-name"></div>
+        <div id="modalMemberRole" class="member-modal-role"></div>
       </div>
-      <div id="modalMemberDescription" class="member-modal-description"></div>
-      <div class="member-contact-buttons">
-        <button id="modalWhatsApp" class="member-contact-btn whatsapp" onclick="contactViaWhatsApp()">
-          <ion-icon name="logo-whatsapp"></ion-icon>
-          WhatsApp
-        </button>
-        <button id="modalEmail" class="member-contact-btn email" onclick="contactViaEmail()">
-          <ion-icon name="mail-outline"></ion-icon>
-          Email
-        </button>
-      </div>
-    </div>
+    </header>
+
+    <!-- BODY (SCROLL AQUÍ) -->
+    <section id="modalMemberDescription"
+             class="member-modal-description">
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="member-contact-buttons">
+      <button id="modalWhatsApp"
+              class="member-contact-btn whatsapp"
+              onclick="contactViaWhatsApp()">
+        <ion-icon name="logo-whatsapp"></ion-icon>
+        WhatsApp
+      </button>
+
+      <button id="modalEmail"
+              class="member-contact-btn email"
+              onclick="contactViaEmail()">
+        <ion-icon name="mail-outline"></ion-icon>
+        Email
+      </button>
+    </footer>
+
   </div>
+</div>
+
 
 
   <div class="services-modal" id="servicesModal">
@@ -1427,20 +1487,44 @@
       <ion-icon name="calendar-outline"></ion-icon>
       Agendar Cita
     </button>
+
     <button class="action-btn secondary" id="btnCompartir">
       <ion-icon name="share-outline"></ion-icon>
       Compartir
     </button>
   </div>
 
+
   <script>
     // Datos de los miembros del equipo
     const teamMembers = {
-      'maria': {
+      'juan': {
         name: 'MBA. Juan Gerardo Miranda',
         role: 'Consultor en previsión Financiera',
         photo: '../../assets/imgs/c/p/profile-1-previsora.png',
-        description: 'Más de 10 años de experiencia en consultoría tecnológica y transformación digital. Especialista en estrategias de crecimiento y liderazgo de equipos multidisciplinarios.',
+        description: 
+        `Soy Juan Gerardo Miranda, consultor en pensiones y proyectos para el retiro, y promotor especializado en previsión financiera, con más de 13 años de experiencia ayudando a personas, familias y empresas a proteger y hacer crecer su patrimonio. 
+        He asesorado a cientos de clientes en:
+
+        - Planes de retiro e inversión. 
+
+        - Seguros de vida, autos y flotillas.
+
+        - Optimización fiscal.
+
+        - Pensiones IMSS (Ley 73 incluyendo Modalidad 40 y Ley 97 Cuentas Individuales).
+
+        - Pensiones ISSSTE (Décimo transitorio y Cuentas Individuales).
+
+        - Gestión profesional de pólizas y trámites.
+
+        Como Promotor experimentado en SKANDIA México, formo y potencio a nuevos asesores financieros mediante reclutamiento estratégico, capacitación técnica–comercial, desarrollo de habilidades consultivas y coaching personalizado para construir equipos sólidos y orientados al cliente.
+
+        Dirijo Previsora, consultoría donde integro experiencia técnica, visión estratégica y un enfoque claro, humano y práctico para convertir información compleja en decisiones inteligentes.
+
+        Mi misión: crear clientes bien informados y asesores verdaderamente preparados, con ética, claridad y alto valor profesional.
+        `
+        ,
         whatsapp: '+524445583022',
         email: 'jerryfinanciero@gmail.com'
       }
@@ -1659,6 +1743,10 @@ END:VCARD`;
         });
       });
     });
+
+
+
+
 
 
   </script>
