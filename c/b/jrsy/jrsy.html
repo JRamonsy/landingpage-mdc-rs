@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Tarjeta digital de Ana García - Diseñadora Gráfica" />
   <title>Juan Ramón Salas Yañez - Desarrollador Full-Stack</title>
-  
+
   <style>
     :root {
       --primary-color: #ffffff;
@@ -74,7 +75,7 @@
       object-fit: cover;
       margin-bottom: 1.5rem;
       border: 4px solid rgba(255, 255, 255, 0.3);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
       position: relative;
       z-index: 2;
     }
@@ -181,7 +182,7 @@
     .social-btn:hover {
       transform: translateY(-3px);
       border-color: rgba(255, 255, 255, 0.6);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
       background: rgba(255, 255, 255, 0.2);
     }
 
@@ -226,7 +227,7 @@
 
     .action-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
 
     .credits {
@@ -241,9 +242,9 @@
     }
 
     .credits-p {
-      display: flex;  
+      display: flex;
     }
-    
+
     .btn-credits {
       background: none;
       border: none;
@@ -267,7 +268,7 @@
     }
 
     .credits a:hover {
-      color:#e0e7ff ;
+      color: #e0e7ff;
     }
 
     .credits-span {
@@ -284,7 +285,7 @@
       border-radius: 50px;
       padding: 12px 20px;
       cursor: pointer;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
       display: flex;
       align-items: center;
       gap: 8px;
@@ -297,7 +298,7 @@
 
     .btn-inicio-flotante:hover {
       transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
       background: white;
     }
 
@@ -412,12 +413,13 @@
     }
 
     .qr-title ion-icon {
-      color: #ffd700; /* Dorado para contraste */
+      color: #ffd700;
+      /* Dorado para contraste */
     }
 
     .qr-code {
-      width: 120px;
-      height: 120px;
+      width: 250px;
+      height: 250px;
       background: linear-gradient(135deg, #ffffff, #f8fafc);
       margin: 0 auto;
       border-radius: 12px;
@@ -428,7 +430,7 @@
       color: #667eea;
       font-size: 0.8rem;
       padding: 10px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
       border: 2px solid rgba(255, 255, 255, 0.5);
     }
 
@@ -439,24 +441,28 @@
       font-weight: 500;
     }
 
+    .qr-img {
+      width: 100%;
+    }
+
     @media (max-width: 480px) {
       .card {
         padding: 1.5rem 1rem;
       }
-      
+
       .action-buttons {
         flex-direction: column;
       }
-      
+
       .btn-inicio-flotante .btn-text {
         display: none;
       }
-      
+
       .btn-inicio-flotante {
         padding: 12px;
         border-radius: 50%;
       }
-      
+
       .privacy-modal-content {
         padding: 1.5rem;
         margin: 1rem;
@@ -467,12 +473,14 @@
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
+
 <body>
   <div class="card">
     <img src="../jrsy/imgs/jrsy.png" alt="Ana García" class="profile-pic" />
-    <h1>juan Ramón Salas Yañez</h1>
+    <h1>Ramón Salas</h1>
     <h2>Desarrollador Full-Stack</h2>
-    <p class="description">Creo identidades visuales que hacen destacar tu marca. Especialista en diseño para redes sociales y branding corporativo.</p>
+    <p class="description">Desarrollo aplicaciones web que convierten ideas en resultados. Full-stack developer enfocado
+      en rendimiento, usabilidad y crecimiento digital.</p>
 
     <div class="contact-info">
       <div class="contact-item" onclick="window.open('tel:+525551234567')">
@@ -491,7 +499,8 @@
         </div>
       </div>
 
-      <div class="contact-item" onclick="window.open('https://wa.me/524447022589?text=Hola%20Ana,%20me%20interesa%20tu%20trabajo%20de%20diseño')">
+      <div class="contact-item"
+        onclick="window.open('https://wa.me/524447022589?text=Hola%20Ana,%20me%20interesa%20tu%20trabajo%20de%20diseño')">
         <ion-icon name="logo-whatsapp"></ion-icon>
         <div class="contact-text">
           <div class="contact-label">WhatsApp</div>
@@ -513,10 +522,10 @@
     <div class="qr-section">
       <div class="qr-title">
         <ion-icon name="qr-code-outline"></ion-icon>
-        QR Personalizado
+        QR RS
       </div>
       <div class="qr-code">
-        <span>QR CODE</span>
+        <img class="qr-img" src="../jrsy/imgs/qr-code-jrsy.png" alt="">
       </div>
       <div class="qr-text">Escanéame para guardar mi contacto</div>
     </div>
@@ -534,13 +543,13 @@
 
     <div class="credits">
       <div class="credits-p">
-        <p>© 2025 Ana García |</p>
+        <p>© 2025 Ramón Salas |</p>
         <button class="btn-credits" id="btnPrivacyNotice">Aviso de Privacidad</button>
       </div>
-      <a href="https://mexicodigitalcards.com" target="_blank">Creado por: 
-        <span class="credits-span" > 
+      <a href="https://mexicodigitalcards.com" target="_blank">Creado por:
+        <span class="credits-span">
           México Digital Cards</a>
-        </span>
+      </span>
     </div>
   </div>
 
@@ -554,51 +563,81 @@
       <h2 class="privacy-modal-title">Aviso de Privacidad</h2>
 
       <div class="privacy-modal-text">
-        <h3>Ana García López</h3>
-        <p><strong>Diseñadora Gráfica Freelance</strong></p>
-        
-        <p>En cumplimiento con la Ley Federal de Protección de Datos Personales en Posesión de los Particulares, hago de su conocimiento lo siguiente:</p>
-        
+        <h3>Ramon Salas</h3>
+        <p><strong>Desarrollador Full-Stack Freelance</strong></p>
+
+        <p>
+          En cumplimiento con lo dispuesto por la Ley Federal de Protección de Datos Personales en Posesión de los
+          Particulares, hago de su conocimiento el presente Aviso de Privacidad:
+        </p>
+
         <h3>1. Identidad y Domicilio del Responsable</h3>
-        <p>Ana García López, diseñadora gráfica freelance, es responsable del tratamiento de sus datos personales. Para efectos de contacto, puede dirigirse al correo electrónico ana.garcia.diseno@ejemplo.com o al teléfono 555 123 4567.</p>
-        
+        <p>
+          Ramon Salas, desarrollador full-stack freelance, es el responsable del uso y protección de sus datos
+          personales.
+          Para cualquier asunto relacionado con el tratamiento de sus datos, puede contactarme a través del correo
+          electrónico
+          <strong>ramon.salaspi1.1@gmail.com</strong>.
+        </p>
+
         <h3>2. Finalidades del Tratamiento</h3>
-        <p>Los datos personales recabados serán utilizados para las siguientes finalidades:</p>
-        
+        <p>Los datos personales que recabo serán utilizados para las siguientes finalidades:</p>
+
         <p><strong>Finalidades Primarias</strong></p>
         <ul>
-          <li>Elaboración de cotizaciones, propuestas y contratos de servicios de diseño.</li>
-          <li>Comunicación durante el desarrollo de proyectos de diseño.</li>
-          <li>Facturación y entrega de trabajos finalizados.</li>
+          <li>Elaboración de cotizaciones, propuestas y contratos de desarrollo web y software.</li>
+          <li>Comunicación durante el desarrollo, mantenimiento o seguimiento de proyectos tecnológicos.</li>
+          <li>Prestación de servicios de desarrollo, soporte técnico y entrega de productos digitales.</li>
+          <li>Facturación y cumplimiento de obligaciones legales.</li>
         </ul>
-        
+
         <p><strong>Finalidades Secundarias</strong></p>
-        <p>Si usted está de acuerdo, sus datos también podrán ser utilizados para:</p>
+        <p>De manera adicional, y únicamente si usted lo autoriza, sus datos personales podrán ser utilizados para:</p>
         <ul>
-          <li>Envío de portafolio actualizado y nuevos servicios</li>
-          <li>Encuestas de satisfacción del servicio</li>
+          <li>Envío de información sobre nuevos servicios, actualizaciones o mejoras.</li>
+          <li>Notificaciones relacionadas con proyectos, contenido o portafolio profesional.</li>
+          <li>Encuestas de satisfacción y mejora del servicio.</li>
         </ul>
-        <p><em>Nota: Puede oponerse al tratamiento de sus datos personales para estas finalidades en cualquier momento.</em></p>
-        
+
+        <p>
+          <em>Nota: Usted puede oponerse en cualquier momento al uso de sus datos para estas finalidades
+            secundarias.</em>
+        </p>
+
         <h3>3. Datos Personales Recabados</h3>
-        <p>Para cumplir con las finalidades anteriores, se recopilarán:</p>
+        <p>Para llevar a cabo las finalidades descritas, se podrán recabar los siguientes datos:</p>
         <ul>
-          <li>Nombre completo y datos de contacto</li>
-          <li>Información de la empresa o proyecto</li>
-          <li>Requerimientos específicos del diseño solicitado</li>
+          <li>Nombre completo.</li>
+          <li>Correo electrónico y medios de contacto.</li>
+          <li>Información relacionada con su empresa, negocio o proyecto.</li>
+          <li>Requerimientos técnicos y funcionales del servicio solicitado.</li>
         </ul>
-        
+
         <h3>4. Transferencia de Datos</h3>
-        <p>Sus datos personales no serán transferidos a terceros sin su consentimiento, excepto cuando sea necesario para procesos de impresión o producción con proveedores autorizados.</p>
-        
+        <p>
+          Sus datos personales no serán compartidos con terceros sin su consentimiento, salvo aquellas excepciones
+          previstas por la ley o cuando sea estrictamente necesario para el cumplimiento del servicio, como proveedores
+          de hosting o herramientas tecnológicas, bajo estrictas medidas de confidencialidad.
+        </p>
+
         <h3>5. Medios para Ejercer Derechos ARCO</h3>
-        <p>Para ejercer sus derechos de Acceso, Rectificación, Cancelación u Oposición, envíe su solicitud a ana.garcia.diseno@ejemplo.com incluyendo su nombre completo y descripción de la solicitud.</p>
-        
+        <p>
+          Usted tiene derecho a Acceder, Rectificar, Cancelar u Oponerse al tratamiento de sus datos personales
+          (Derechos ARCO).
+          Para ejercerlos, puede enviar una solicitud al correo <strong>ramon.salaspi1.1@gmail.com</strong>,
+          incluyendo su nombre completo y una descripción clara del derecho que desea ejercer.
+        </p>
+
         <p><em>Fecha de última actualización: 15 de Enero de 2025.</em></p>
-        
-        <p>Declaro que he leído, comprendido y acepto el tratamiento de mis datos personales conforme a lo establecido en este aviso de privacidad.</p>
+
+        <p>
+          Declaro que he leído y comprendido el presente Aviso de Privacidad y acepto el tratamiento de mis datos
+          personales conforme a lo aquí establecido.
+        </p>
+
+
       </div>
-      
+
 
     </div>
   </div>
@@ -637,12 +676,12 @@ TITLE:Desarrollador Full-Stack
 TEL;TYPE=CELL:+524447022589
 EMAIL:ramon.salaspi1.1@gmail.com
 URL:https://ramonsalas.com
-NOTE:Especialista en diseño para redes sociales y branding corporativo
+NOTE:Construyo proyectos web de principio a fin.
 END:VCARD`;
 
       const blob = new Blob([vcf], { type: "text/vcard;charset=utf-8" });
       const url = URL.createObjectURL(blob);
-      
+
       const link = document.createElement("a");
       link.href = url;
       link.download = "ana-garcia-disenadora.vcf";
@@ -658,28 +697,29 @@ END:VCARD`;
     const privacyModalClose = document.getElementById('privacyModalClose');
 
     // Abrir modal
-    btnPrivacyNotice.addEventListener('click', function() {
+    btnPrivacyNotice.addEventListener('click', function () {
       privacyModal.style.display = 'flex';
     });
 
     // Cerrar modal
-    privacyModalClose.addEventListener('click', function() {
+    privacyModalClose.addEventListener('click', function () {
       privacyModal.style.display = 'none';
     });
 
     // Cerrar modal al hacer clic fuera del contenido
-    privacyModal.addEventListener('click', function(e) {
+    privacyModal.addEventListener('click', function (e) {
       if (e.target === privacyModal) {
         privacyModal.style.display = 'none';
       }
     });
 
     // Cerrar modal con tecla Escape
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && privacyModal.style.display === 'flex') {
         privacyModal.style.display = 'none';
       }
     });
   </script>
 </body>
+
 </html>
